@@ -1,8 +1,8 @@
 {
+  "homepage": "https://AMS003010.github.io/portfolio-website",
   "name": "myportfolioweb",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://AMS003010.github.io/AMS003010.github.io",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

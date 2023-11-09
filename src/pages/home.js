@@ -4,7 +4,7 @@ import coverPic from '../component/img/cover.jpg'
 
 const Home = () => {
     return(
-        <div    >
+        <div>
             <NavBar/>
             <div className='homeContainer'>
                 <div className='infoDiv'>
