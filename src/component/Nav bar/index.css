@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Michroma&family=Monoton&family=Poppins&family=Rubik&family=Secular+One&family=Squada+One&family=Ubuntu:wght@700&display=swap');
+
+.navWrapper {
+    display: flex;
+    font-family: Michroma;
+    font-size: 1.4rem;
+    margin-top: 1.5rem;
+    margin-left: 3rem;
+    gap: 10%;
+    margin-right: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.navContainer {
+    margin-left: 3rem;
+    gap: 3rem;
+    display: flex;
+    margin-right: 5rem;
+}

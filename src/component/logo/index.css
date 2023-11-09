@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Michroma&family=Monoton&family=Poppins&family=Rubik&family=Secular+One&family=Squada+One&family=Ubuntu:wght@700&display=swap');
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.logoContainer img {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 0.3rem;
+}
+
+.logoContainer span {
+    font-family: Michroma;
+    font-size: 1.4rem;
+}
