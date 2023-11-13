@@ -1,7 +1,8 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 
-import Home from "./pages/home";
+//import Home from "./pages/home";
 //import Check from "./pages/check";
+import InProgress from "./component/inProgress/inProgress";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <Routes>
           <Route
           path="/portfolio-website"
-          element={<Home />}
+          element={<InProgress />}
           />
         </Routes>
       </div>
@@ -19,5 +20,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
