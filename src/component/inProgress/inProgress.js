@@ -20,7 +20,7 @@ const InProgress = () => {
         alignItems: 'center',
         height: '100vh',
         flexDirection:'column',
-        background: 'radial-gradient(at top left,#ff9f58, #FFEADD)'
+        background: 'radial-gradient(at top left,#ff1ab3, #ffb3e6)'
     };
 
     return (
@@ -28,7 +28,7 @@ const InProgress = () => {
             <div style={myStyle} className='inProgressText'>
                 Still  working  on  it....
             </div>
-            <div style={{fontFamily:'Poppins',fontWeight:'900'}}>Bored. Check out my socials...</div>
+            <div style={{fontFamily:'Poppins',fontWeight:'900'}}>Bored😅. Check out my socials...</div>
             <div  className='socialDiv'>
                 <a href='https://www.linkedin.com/in/abhijith-m-s-221855275/' target='blank'>
                     <img src={linkedinIcon} alt='l' className='socialIcon'/>

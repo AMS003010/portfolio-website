@@ -1,17 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Michroma&family=Monoton&family=Poppins&family=Rubik&family=Secular+One&family=Squada+One&family=Ubuntu:wght@700&display=swap');
 
-@media screen and (max-width:1450px){  
-    /*For laptop screens*/
+@media screen and (max-width: 1450px) {
+    /* For laptop screens */
     .inProgressDiv {
-        font-family: Secular One;
+        font-family: 'Secular One';
         letter-spacing: 2.5%;
     }
-    
+
     .inProgressText {
-        background: linear-gradient(to right,orange,rgb(183, 123, 12),rgb(158, 1, 1));
+        background: linear-gradient(to right, purple, crimson);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-size: 5rem;
+        transition: transform 1000ms;
+    }
+
+    .inProgressText:hover {
+        transform: translateY(-50px);
+        transition: transform 450ms;
     }
 
     .socialDiv {
@@ -19,24 +25,30 @@
         gap: 30px;
         margin-top: 10px;
     }
-    
+
     .socialIcon {
         width: 30px;
     }
 }
 
-@media screen and (max-width:550px){  
-    /*For laptop screens*/
+@media screen and (max-width: 550px) {
+    /* For mobile screens */
     .inProgressDiv {
-        font-family: Secular One;
+        font-family: 'Secular One';
         letter-spacing: 2.5%;
     }
-    
+
     .inProgressText {
-        background: linear-gradient(to right,orange,rgb(183, 123, 12),rgb(158, 1, 1));
+        background: linear-gradient(to right, orange, rgb(183, 123, 12), rgb(158, 1, 1));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-size: 3rem;
+        transition: transform 1000ms;
+    }
+
+    .inProgressText:focus {
+        transform: translateY(-50px);
+        transition: transform 450ms;
     }
 
     .socialDiv {
@@ -44,7 +56,7 @@
         gap: 30px;
         margin-top: 10px;
     }
-    
+
     .socialIcon {
         width: 30px;
     }
