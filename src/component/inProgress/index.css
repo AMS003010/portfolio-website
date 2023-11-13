@@ -7,6 +7,10 @@
         letter-spacing: 2.5%;
     }
 
+    .commentContainer {
+        font-size: 1rem;
+    }
+
     .inProgressText {
         background: linear-gradient(to right, purple, crimson);
         -webkit-background-clip: text;
@@ -27,7 +31,7 @@
     }
 
     .socialIcon {
-        width: 30px;
+        width: 2rem;
     }
 }
 
@@ -38,8 +42,12 @@
         letter-spacing: 2.5%;
     }
 
+    .commentContainer {
+        font-size: 0.8rem;
+    }
+
     .inProgressText {
-        background: linear-gradient(to right, orange, rgb(183, 123, 12), rgb(158, 1, 1));
+        background: linear-gradient(to right, purple, crimson);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-size: 3rem;
@@ -58,6 +66,41 @@
     }
 
     .socialIcon {
-        width: 30px;
+        width: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    /* For mobile screens */
+    .inProgressDiv {
+        font-family: 'Secular One';
+        letter-spacing: 2.5%;
+    }
+
+    .commentContainer {
+        font-size: 0.6rem;
+    }
+
+    .inProgressText {
+        background: linear-gradient(to right, purple, crimson);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 2rem;
+        transition: transform 1000ms;
+    }
+
+    .inProgressText:focus {
+        transform: translateY(-50px);
+        transition: transform 450ms;
+    }
+
+    .socialDiv {
+        display: flex;
+        gap: 30px;
+        margin-top: 10px;
+    }
+
+    .socialIcon {
+        width: 1.5rem;
     }
 }
