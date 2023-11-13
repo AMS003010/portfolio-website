@@ -70,7 +70,7 @@
     }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 360px) {
     /* For mobile screens */
     .inProgressDiv {
         font-family: 'Secular One';
