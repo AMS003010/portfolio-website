@@ -32,6 +32,15 @@
 
     .socialIcon {
         width: 2rem;
+        border-radius: 7px;
+        background: #f089ce;
+        padding: 0.2rem;
+        box-shadow:  -5px 5px 10px #ff1ab3,
+                    5px -5px 10px #ffb3e6;
+    }
+
+    .socialIcon:hover {
+        background: linear-gradient(225deg, #e987c8, #e070ba);
     }
 }
 
@@ -62,7 +71,7 @@
     .socialDiv {
         display: flex;
         gap: 30px;
-        margin-top: 10px;
+        margin-top: 20px;
     }
 
     .socialIcon {
