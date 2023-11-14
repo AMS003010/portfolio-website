@@ -9,8 +9,6 @@ const InProgress = () => {
         width:'50%',
         textAlign:'center',
         padding:'10px',
-        border:'5px solid black',
-        borderRadius:'20px',
         marginBottom:'3rem',
     };
 
@@ -20,7 +18,7 @@ const InProgress = () => {
         alignItems: 'center',
         height: '100vh',
         flexDirection:'column',
-        background: 'radial-gradient(at top left,#ff1ab3, #ffb3e6)'
+        background: 'radial-gradient(at top left,#40E0D0, skyblue)'
     };
 
     return (

@@ -12,35 +12,39 @@
     }
 
     .inProgressText {
-        background: linear-gradient(to right, purple, crimson);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         font-size: 5rem;
-        transition: transform 1000ms;
+        border-radius: 40px;
+        background: #71d3e2;
+        box-shadow:  -10px 10px 20px #60b3c0,
+                        10px -10px 20px #82f3ff;
     }
 
-    .inProgressText:hover {
-        transform: translateY(-50px);
-        transition: transform 450ms;
+    .commentContainer {
+        width: max-content;
+        padding: 0.7rem;
+        border-radius: 10px;
+        background: #71d3e2;
+        box-shadow:  -5px 5px 10px #60b3c0,
+                    5px -5px 10px #82f3ff; 
     }
 
     .socialDiv {
         display: flex;
         gap: 30px;
-        margin-top: 10px;
+        margin-top: 30px;
     }
 
     .socialIcon {
         width: 2rem;
-        border-radius: 7px;
-        background: #f089ce;
+        border-radius: 10px;
+        background: #71d3e2;
         padding: 0.2rem;
-        box-shadow:  -5px 5px 10px #ff1ab3,
-                    5px -5px 10px #ffb3e6;
+        box-shadow:  -5px 5px 10px #60b3c0,
+                    5px -5px 10px #82f3ff;
     }
 
     .socialIcon:hover {
-        background: linear-gradient(225deg, #e987c8, #e070ba);
+        background: linear-gradient(225deg, #82f3ff, #60b3c0);
     }
 }
 
@@ -56,16 +60,20 @@
     }
 
     .inProgressText {
-        background: linear-gradient(to right, purple, crimson);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         font-size: 3rem;
-        transition: transform 1000ms;
+        border-radius: 40px;
+        background: #e66bbd;
+        box-shadow:  -10px 10px 20px #ff1ab3,
+                        10px -10px 20px #eaa0d1;
     }
 
-    .inProgressText:focus {
-        transform: translateY(-50px);
-        transition: transform 450ms;
+    .commentContainer {
+        width: max-content;
+        padding: 0.7rem;
+        border-radius: 10px;
+        background: #f089ce;
+        box-shadow:  -5px 5px 10px #ff1ab3,
+                    5px -5px 10px #eaa0d1; 
     }
 
     .socialDiv {
@@ -76,6 +84,15 @@
 
     .socialIcon {
         width: 1.7rem;
+        border-radius: 7px;
+        background: #f089ce;
+        padding: 0.2rem;
+        box-shadow:  -5px 5px 10px #ff1ab3,
+                    5px -5px 10px #eaa0d1;
+    }
+
+    .socialIcon:hover {
+        background: linear-gradient(225deg, #e987c8, #e070ba);
     }
 }
 
@@ -91,16 +108,20 @@
     }
 
     .inProgressText {
-        background: linear-gradient(to right, purple, crimson);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         font-size: 2rem;
-        transition: transform 1000ms;
+        border-radius: 40px;
+        background: #e66bbd;
+        box-shadow:  -10px 10px 20px #ff1ab3,
+                        10px -10px 20px #eaa0d1;
     }
 
-    .inProgressText:focus {
-        transform: translateY(-50px);
-        transition: transform 450ms;
+    .commentContainer {
+        width: max-content;
+        padding: 0.7rem;
+        border-radius: 10px;
+        background: #f089ce;
+        box-shadow:  -5px 5px 10px #ff1ab3,
+                    5px -5px 10px #eaa0d1; 
     }
 
     .socialDiv {
@@ -111,5 +132,14 @@
 
     .socialIcon {
         width: 1.5rem;
+        border-radius: 7px;
+        background: #f089ce;
+        padding: 0.2rem;
+        box-shadow:  -5px 5px 10px #ff1ab3,
+                    5px -5px 10px #eaa0d1;
+    }
+
+    .socialIcon:hover {
+        background: linear-gradient(225deg, #e987c8, #e070ba);
     }
 }
