@@ -62,18 +62,18 @@
     .inProgressText {
         font-size: 3rem;
         border-radius: 40px;
-        background: #e66bbd;
-        box-shadow:  -10px 10px 20px #ff1ab3,
-                        10px -10px 20px #eaa0d1;
+        background: #71d3e2;
+        box-shadow:  -10px 10px 20px #60b3c0,
+                        10px -10px 20px #82f3ff;
     }
 
     .commentContainer {
         width: max-content;
         padding: 0.7rem;
         border-radius: 10px;
-        background: #f089ce;
-        box-shadow:  -5px 5px 10px #ff1ab3,
-                    5px -5px 10px #eaa0d1; 
+        background: #71d3e2;
+        box-shadow:  -5px 5px 10px #60b3c0,
+                    5px -5px 10px #82f3ff; 
     }
 
     .socialDiv {
@@ -84,15 +84,15 @@
 
     .socialIcon {
         width: 1.7rem;
-        border-radius: 7px;
-        background: #f089ce;
+        border-radius: 10px;
+        background: #71d3e2;
         padding: 0.2rem;
-        box-shadow:  -5px 5px 10px #ff1ab3,
-                    5px -5px 10px #eaa0d1;
+        box-shadow:  -5px 5px 10px #60b3c0,
+                    5px -5px 10px #82f3ff;
     }
 
     .socialIcon:hover {
-        background: linear-gradient(225deg, #e987c8, #e070ba);
+        background: linear-gradient(225deg, #82f3ff, #60b3c0);
     }
 }
 
@@ -110,18 +110,18 @@
     .inProgressText {
         font-size: 2rem;
         border-radius: 40px;
-        background: #e66bbd;
-        box-shadow:  -10px 10px 20px #ff1ab3,
-                        10px -10px 20px #eaa0d1;
+        background: #71d3e2;
+        box-shadow:  -10px 10px 20px #60b3c0,
+                        10px -10px 20px #82f3ff;
     }
 
     .commentContainer {
         width: max-content;
         padding: 0.7rem;
         border-radius: 10px;
-        background: #f089ce;
-        box-shadow:  -5px 5px 10px #ff1ab3,
-                    5px -5px 10px #eaa0d1; 
+        background: #71d3e2;
+        box-shadow:  -5px 5px 10px #60b3c0,
+                    5px -5px 10px #82f3ff; 
     }
 
     .socialDiv {
@@ -132,14 +132,14 @@
 
     .socialIcon {
         width: 1.5rem;
-        border-radius: 7px;
-        background: #f089ce;
+        border-radius: 10px;
+        background: #71d3e2;
         padding: 0.2rem;
-        box-shadow:  -5px 5px 10px #ff1ab3,
-                    5px -5px 10px #eaa0d1;
+        box-shadow:  -5px 5px 10px #60b3c0,
+                    5px -5px 10px #82f3ff;
     }
 
     .socialIcon:hover {
-        background: linear-gradient(225deg, #e987c8, #e070ba);
+        background: linear-gradient(225deg, #82f3ff, #60b3c0);
     }
 }
