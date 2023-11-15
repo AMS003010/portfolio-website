@@ -1,5 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Michroma&family=Monoton&family=Poppins&family=Rubik&family=Secular+One&family=Squada+One&family=Ubuntu:wght@700&display=swap');
 
+.inProgressDiv {
+    font-family: 'Secular One';
+    letter-spacing: 2.5%;
+}
+
+.commentContainer {
+    font-size: 1rem;
+}
+
+.inProgressText {
+    font-size: 5rem;
+    border-radius: 40px;
+    background: #71d3e2;
+    box-shadow:  -10px 10px 20px #60b3c0,
+                    10px -10px 20px #82f3ff;
+}
+
+.commentContainer {
+    width: max-content;
+    padding: 0.7rem;
+    border-radius: 10px;
+    background: #71d3e2;
+    box-shadow:  -5px 5px 10px #60b3c0,
+                5px -5px 10px #82f3ff; 
+}
+
+.socialDiv {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.socialIcon {
+    width: 2rem;
+    border-radius: 10px;
+    background: #71d3e2;
+    padding: 0.2rem;
+    box-shadow:  -5px 5px 10px #60b3c0,
+                5px -5px 10px #82f3ff;
+}
+
+.socialIcon:hover {
+    background: linear-gradient(225deg, #82f3ff, #60b3c0);
+}
+
+
 @media screen and (max-width: 1450px) {
     /* For laptop screens */
     .inProgressDiv {
