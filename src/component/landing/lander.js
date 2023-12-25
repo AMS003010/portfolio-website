@@ -33,26 +33,12 @@ const HexagonAnimation = () => {
         <div className="container">
         <svg
             id="hexagon"
-            viewBox="0 0 320 410"
+            viewBox="0 0 320 550"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
         >
             <g>
-            <text
-                id="A"
-                fill="#64FFDA"
-                style={{ opacity: 0 }}
-                fontSize="30"
-                fontWeight="400"
-                letterSpacing="4.16666603"
-                textAnchor="middle"
-                alignmentBaseline="middle"
-            >
-                <tspan x="52" y="60" style={{fontFamily:'Michroma'}}>
-                
-                </tspan>
-            </text>
             <path
                 id="hexagonPath"
                 stroke="#64FFDA"
@@ -88,7 +74,21 @@ const HexagonAnimation = () => {
                     L 155, 405
                     L 5,255
                     L 155, 105"                
-            />          
+            />
+            <text
+                id="A"
+                fill="#64FFDA"
+                style={{ opacity: 0 }}
+                fontSize="30"
+                fontWeight="400"
+                letterSpacing="4.16666603"
+                textAnchor="middle"
+                alignmentBaseline="middle"
+            >
+                <tspan x="150" y="520" style={{fontFamily:'Michroma',fontSize:'5rem'}}>
+                Abhi.
+                </tspan>
+            </text>          
             </g>
         </svg>
         </div>
