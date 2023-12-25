@@ -2,9 +2,11 @@ import './index.css'
 
 import React, { useEffect } from 'react';
 import anime from 'animejs';
+import { Link } from 'react-router-dom';
 
 const HexagonAnimation = () => {
-  useEffect(() => {
+
+    useEffect(() => {
     const anim = anime.timeline({
       loop: false,
       direction: 'alternate',
@@ -29,7 +31,7 @@ const HexagonAnimation = () => {
   }, []);
 
   return (
-    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+    <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
         <div className="container">
         <svg
             id="hexagon"
@@ -92,6 +94,9 @@ const HexagonAnimation = () => {
             </g>
         </svg>
         </div>
+        <Link to='/portfolio-website/home'>
+            <button className="button-54">Welcome 🡪</button>
+        </Link>
     </div>
   );
 };
