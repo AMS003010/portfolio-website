@@ -1,0 +1,37 @@
+html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    background-color: #0a192f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
+  
+  .container {
+    width: max-content;
+    max-width: 100px;
+  }
+  
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    fill: none;
+  }
+  
