@@ -4,6 +4,11 @@ body, html {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    margin: 0;
+    background: radial-gradient(at top left, #0a192f, #0b2242);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .homeContainer {

@@ -1,12 +1,10 @@
-import './index.css'
-
+import './index.css';
 import React, { useEffect } from 'react';
 import anime from 'animejs';
 import { Link } from 'react-router-dom';
 
 const HexagonAnimation = () => {
-
-    useEffect(() => {
+  useEffect(() => {
     const anim = anime.timeline({
       loop: false,
       direction: 'alternate',
@@ -31,72 +29,74 @@ const HexagonAnimation = () => {
   }, []);
 
   return (
-    <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-        <div className="container">
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+      <div className="container">
         <svg
-            id="hexagon"
-            viewBox="0 0 320 550"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
+          id="hexagon"
+          viewBox="0 0 320 550"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
         >
-            <g>
+          <g>
             <path
-                id="hexagonPath"
-                stroke="#64FFDA"
-                strokeWidth="5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d ="M 155, 5
+              id="hexagonPath"
+              stroke="#64FFDA"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M 155, 5
                     L 305, 155
                     L 155, 305
                     L 5,155
-                    L 155, 5"                
+                    L 155, 5"
             />
             <path
-                id="hexagonPath"
-                stroke="#64FFDA"
-                strokeWidth="5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d ="M 155, 55
+              id="hexagonPath"
+              stroke="#64FFDA"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M 155, 55
                     L 305, 205
                     L 155, 355
                     L 5,205
-                    L 155, 55"                
+                    L 155, 55"
             />
             <path
-                id="hexagonPath"
-                stroke="#64FFDA"
-                strokeWidth="5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d ="M 155, 105
+              id="hexagonPath"
+              stroke="#64FFDA"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M 155, 105
                     L 305, 255
                     L 155, 405
                     L 5,255
-                    L 155, 105"                
+                    L 155, 105"
             />
             <text
-                id="A"
-                fill="#64FFDA"
-                style={{ opacity: 0 }}
-                fontSize="30"
-                fontWeight="400"
-                letterSpacing="4.16666603"
-                textAnchor="middle"
-                alignmentBaseline="middle"
+              id="A"
+              fill="#64FFDA"
+              style={{ opacity: 0 }}
+              fontSize="30"
+              fontWeight="400"
+              letterSpacing="4.16666603"
+              textAnchor="middle"
+              alignmentBaseline="middle"
             >
-                <tspan x="150" y="520" style={{fontFamily:'Michroma',fontSize:'5rem'}}>
+              <tspan x="150" y="520" style={{ fontFamily: 'Michroma', fontSize: '5rem' }}>
                 Abhi.
-                </tspan>
-            </text>          
-            </g>
+              </tspan>
+            </text>
+          </g>
         </svg>
-        </div>
-        <Link to='/portfolio-website/home'>
-            <button className="button-54">Welcome 🡪</button>
-        </Link>
+      </div>
+      <Link to="/portfolio-website/home">
+        <button className="button-54">
+          Welcome 🡪
+        </button>
+      </Link>
     </div>
   );
 };

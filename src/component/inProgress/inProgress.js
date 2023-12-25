@@ -18,7 +18,6 @@ const InProgress = () => {
         alignItems: 'center',
         height: '100vh',
         flexDirection:'column',
-        background: 'radial-gradient(at top left,#40E0D0, skyblue)'
     };
 
     return (
