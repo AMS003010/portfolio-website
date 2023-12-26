@@ -1,19 +1,177 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Michroma&family=Monoton&family=Poppins&family=Rubik&family=Secular+One&family=Squada+One&family=Ubuntu:wght@700&display=swap');
 
 .navWrapper {
+    height: 100vh;
     display: flex;
+    color: #64ffda;
     font-family: Michroma;
-    font-size: 1.4rem;
-    margin-top: 1.5rem;
+    padding-top: 2rem;
     margin-left: 3rem;
-    gap: 10%;
-    margin-right: 3rem;
-    margin-bottom: 1.5rem;
 }
 
-.navContainer {
-    margin-left: 3rem;
-    gap: 3rem;
-    display: flex;
-    margin-right: 5rem;
+div {
+    margin: 0px;
+    padding: 0px;
+}
+
+.logoDiv {
+    border-color: #64ffda;
+    border-width: 1px;
+    border-style: solid;
+    width: 28rem;
+    border-radius: 5rem;
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.4rem;
+    height: 2rem;
+    background-color: #0a192f;
+}
+
+.logoDiv span {
+    margin-left: 2rem;
+}
+
+.logoDiv span:last-child {
+    margin-right: 2rem;
+}
+
+@media screen and (max-width: 1300px) {
+    .navWrapper {
+        height: 100vh;
+        display: flex;
+        color: #64ffda;
+        font-family: Michroma;
+        padding-top: 2rem;
+        margin-left: 3rem;
+        width: fit-content;
+        height: fit-content;
+    }
+    
+    div {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    .logoDiv {
+        border-color: #64ffda;
+        border-width: 1px;
+        border-style: solid;
+        width: 25rem;
+        border-radius: 5rem;
+        text-align: center;
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+        height: 2rem;
+        background-color: #0a192f;
+    }
+    
+    .logoDiv span {
+        margin-left: 2rem;
+    }
+    
+    .logoDiv span:last-child {
+        margin-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 1110px) {
+    .navWrapper {
+        height: 100vh;
+        display: flex;
+        color: #64ffda;
+        font-family: Michroma;
+        padding-top: 2rem;
+        margin-left: 3rem;
+    }
+    
+    div {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    .logoDiv {
+        border-color: #64ffda;
+        border-width: 1px;
+        border-style: solid;
+        width: 25rem;
+        border-radius: 5rem;
+        text-align: center;
+        padding-top: 0.7rem;
+        padding-bottom: 0.3rem;
+        height: 2rem;
+        background-color: #0a192f;
+    }
+    
+    .logoDiv span {
+        margin-left: 2rem;
+    }
+    
+    .logoDiv span:last-child {
+        margin-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .navWrapper {
+        height: 100vh;
+        display: flex;
+        color: #64ffda;
+        font-family: Michroma;
+        padding-top: 2rem;
+        margin-left: 3rem;
+    }
+    
+    div {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    .logoDiv {
+        display: none;
+    }
+    
+    .logoDiv span {
+        margin-left: 2rem;
+    }
+    
+    .logoDiv span:last-child {
+        margin-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 365px) {
+    .navWrapper {
+        height: 100vh;
+        display: flex;
+        color: #64ffda;
+        font-family: Michroma;
+        padding-top: 2rem;
+        margin-left: 3rem;
+    }
+    
+    div {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    .logoDiv {
+        border-color: #64ffda;
+        border-width: 1px;
+        border-style: solid;
+        width: 28rem;
+        border-radius: 5rem;
+        text-align: center;
+        padding-top: 0.5rem;
+        padding-bottom: 0.4rem;
+        height: 2rem;
+        background-color: #0a192f;
+    }
+    
+    .logoDiv span {
+        margin-left: 2rem;
+    }
+    
+    .logoDiv span:last-child {
+        margin-right: 2rem;
+    }
 }

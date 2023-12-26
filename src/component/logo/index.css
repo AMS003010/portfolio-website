@@ -3,15 +3,103 @@
 .logoContainer {
     display: flex;
     align-items: center;
+    align-self: flex-start;
+    margin-right: 20rem;
 }
 
 .logoContainer img {
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 2rem;
+    height: 2rem;
     margin-right: 0.3rem;
 }
 
 .logoContainer span {
     font-family: Michroma;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    color: #64ffda;
+}
+
+@media screen and (max-width: 1300px) {
+    .logoContainer {
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+        margin-right: 20rem;
+    }
+    
+    .logoContainer img {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.3rem;
+    }
+    
+    .logoContainer span {
+        font-family: Michroma;
+        font-size: 1.5rem;
+        color: #64ffda;
+    }
+}
+
+
+@media screen and (max-width: 1110px) {
+    .logoContainer {
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+        margin-right: 10rem;
+    }
+    
+    .logoContainer img {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.3rem;
+    }
+    
+    .logoContainer span {
+        font-family: Michroma;
+        font-size: 1.5rem;
+        color: #64ffda;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .logoContainer {
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+        margin-right: 20rem;
+    }
+    
+    .logoContainer img {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.3rem;
+    }
+    
+    .logoContainer span {
+        font-family: Michroma;
+        font-size: 1rem;
+        color: #64ffda;
+    }
+}
+
+@media screen and (max-width: 365px) {
+    .logoContainer {
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+        margin-right: 20rem;
+    }
+    
+    .logoContainer img {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.3rem;
+    }
+    
+    .logoContainer span {
+        font-family: Michroma;
+        font-size: 1.5rem;
+        color: #64ffda;
+    }
 }

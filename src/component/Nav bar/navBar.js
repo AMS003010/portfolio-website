@@ -7,6 +7,11 @@ const NavBar = () => {
         <div>
             <div  className='navWrapper'>
                 <Logo/>
+                <div className='logoDiv'>
+                    <span>Home</span>
+                    <span>Projects</span>
+                    <span>About me</span>
+                </div>
             </div>            
         </div>
     )

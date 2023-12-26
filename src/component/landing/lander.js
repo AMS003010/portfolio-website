@@ -29,7 +29,7 @@ const HexagonAnimation = () => {
   }, []);
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+    <div className="landerWrapper" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
       <div className="container">
         <svg
           id="hexagon"

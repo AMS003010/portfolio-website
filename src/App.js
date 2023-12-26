@@ -1,7 +1,6 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 
-//import Home from "./pages/home";
-//import Check from "./pages/check";
+import Home from "./pages/home";
 import HexagonAnimation from "./component/landing/lander";
 import InProgress from "./component/inProgress/inProgress";
 
@@ -17,6 +16,10 @@ function App() {
           />
           <Route
             path="/portfolio-website/home"
+            element={<Home />}
+          />
+          <Route
+            path="/portfolio-website/end"
             element={<InProgress />}
           />
         </Routes>
