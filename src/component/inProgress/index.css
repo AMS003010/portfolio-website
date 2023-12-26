@@ -106,7 +106,7 @@
     }
 
     .inProgressText {
-        font-size: 3rem;
+        font-size: 2rem;
         border-radius: 40px;
         background: #0b213f;
         box-shadow:  -10px 10px 20px #091528,
@@ -142,7 +142,7 @@
     }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 365px) {
     /* For mobile screens */
     .inProgressDiv {
         font-family: 'Secular One';
@@ -173,7 +173,7 @@
     .socialDiv {
         display: flex;
         gap: 30px;
-        margin-top: 10px;
+        margin-top: 17px;
     }
 
     .socialIcon {
