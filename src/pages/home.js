@@ -41,6 +41,8 @@ const Home = () => {
                         </a>
                     </div>                   
                 </div>
+                <div className="panelHome">   
+                </div>
             </div>
         </div>
     )

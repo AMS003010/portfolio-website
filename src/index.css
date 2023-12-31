@@ -6,6 +6,7 @@ html, body {
     height: 100%;
     scroll-behavior: smooth;
     overflow: hidden;
+    overflow-y: auto;
   }
   
   .pages {
@@ -46,7 +47,7 @@ html, body {
     font-weight: 900;
   }
 
-  .introHomeContainer {
+  .introHome {
     width: 50%;
   }
 
@@ -64,6 +65,10 @@ html, body {
     height: 2rem;
   }
 
+  .socialHomeLink:hover {
+    opacity: 0.5;
+  }
+
   .socialHomeLink {
     text-decoration: none;
     margin-right: 1rem;
@@ -72,6 +77,23 @@ html, body {
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+
+  .projectsContainer:after {
+    content: "";
+    display: table;
+    clear: both;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .projectsWrapper {
+    font-family: Michroma;
+    color: #64ffda;
+  }
+
+  .projectsWrapper h1 {
+    font-size: 4rem;
   }
 
   @media screen and (max-width: 1300px) {
@@ -116,6 +138,10 @@ html, body {
     .socialHomeIcon {
       width: 2rem;
       height: 2rem;
+    }
+
+    .socialHomeLink:hover {
+      opacity: 0.5;
     }
   
     .socialHomeLink {
@@ -168,13 +194,17 @@ html, body {
       font-family: 400;
     }
 
-    .introHomeContainer {
-      width: 65%;
+    .introHome{
+      width: 75%;
     }
 
     .socialHomeIcon {
       width: 2rem;
       height: 2rem;
+    }
+
+    .socialHomeLink:hover {
+      opacity: 0.5;
     }
   
     .socialHomeLink {
@@ -232,6 +262,10 @@ html, body {
       width: 2rem;
       height: 2rem;
     }
+
+    .socialHomeLink:hover {
+      opacity: 0.5;
+    }
   
     .socialHomeLink {
       text-decoration: none;
@@ -241,6 +275,10 @@ html, body {
       display: flex;
       flex-direction: row;
       align-items: center;
+    }
+
+    .introHome {
+      width: 90%;
     }
   }
 
@@ -287,6 +325,10 @@ html, body {
       width: 1.4rem;
       height: 1.4rem;
     }
+
+    .socialHomeLink:hover {
+      opacity: 0.5;
+    }
   
     .socialHomeLink {
       text-decoration: none;
@@ -298,8 +340,8 @@ html, body {
       align-items: center;
     }
 
-    .introHomeContainer {
-      width: 70%;
+    .introHome {
+      width: 95%;
     }
   }
 
@@ -342,13 +384,17 @@ html, body {
       font-family: 400;
     }
 
-    .introHomeContainer {
-      width: 50%;
+    .introHome {
+      width: 90%;
     }
 
     .socialHomeIcon {
       width: 1.5rem;
       height: 1.5rem;
+    }
+
+    .socialHomeLink:hover {
+      opacity: 0.5;
     }
   
     .socialHomeLink {
@@ -405,6 +451,10 @@ html, body {
     .socialHomeIcon {
       width: 2rem;
       height: 2rem;
+    }
+
+    .socialHomeLink:hover {
+      opacity: 0.5;
     }
   
     .socialHomeLink {

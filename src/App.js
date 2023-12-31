@@ -1,8 +1,9 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 
-import Home from "./pages/home";
+//import Home from "./pages/home";
 import HexagonAnimation from "./component/landing/lander";
 import InProgress from "./component/inProgress/inProgress";
+import Projects from "./pages/projects";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           />
           <Route
             path="/portfolio-website/home"
-            element={<Home />}
+            element={<Projects />}
           />
           <Route
             path="/portfolio-website/end"
