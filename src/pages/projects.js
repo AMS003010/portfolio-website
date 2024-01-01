@@ -30,7 +30,6 @@ import cpp from '../component/img/c++.png';
 const Projects = () => {
 
     const myStyle = {
-        height:'200vh',
         padding:'0px',
         margin:'0px'
     }
@@ -38,11 +37,12 @@ const Projects = () => {
     const divStyle = {
         marginLeft:'4.9rem',
         marginRight:'4.9rem',
-        marginTop:'3.5rem'
+        marginTop:'3.5rem',
+        alignItems:'center'
     }
 
     return(
-        <div style={myStyle}>
+        <div style={myStyle} className="mainProjectsContainer">
             <NavBar/>
             <div style={divStyle} className="projectsWrapper">
                 <h1 style={{marginBottom:'5rem'}}>My Projects</h1>

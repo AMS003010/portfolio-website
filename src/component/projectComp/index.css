@@ -130,14 +130,538 @@
     border: 1px solid yellow;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1300px) {
     .projCompContainer {
-      width: 50%;
+        padding: 0px;
+        margin: 0px;
+        margin-right:17.5rem;
+        margin-bottom:5.5rem;
+        float: left;
+        width: 25%;
+    }
+    
+    .projCompDiv1 {
+        position: relative;
+        border-radius: 15px;
+        width:24.4rem;
+        height:23rem;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .projCompDiv2 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-style:solid;
+        border-width:1px;
+        border-color:white;
+        width: 77%;
+        height: 100%;
+        border-radius: 15px;
+        transition: width 0.3s ease;
+        background-color: #0a192f;
+        padding: 1rem;
+        text-align: left;
+        overflow: hidden;
+    }
+    
+    .projCompDiv2::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,transparent,#fff,transparent);
+        transition: 0.5s;
+    }
+    
+    .projCompDiv2:hover::before {
+        left: 100%;
+    }
+    
+    .projComponents {
+        right: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+    
+    .projImage {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        width: 100%;
+        height: 47%;
+        border-radius: 15px;   
+    }
+    
+    .projHead {
+        font-size: 1.3rem;
+        margin-bottom: 0.4rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+    }
+    
+    .projInfo {
+        font-size: 0.7rem;
+    }
+    
+    .projLink {
+        position: absolute;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        width: max-content;
+        height: max-content;
+        border: 1px solid rgb(110, 101, 101);
+        border-radius: 5px;
+        right: 0.7rem;
+        bottom: 0.7rem;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: rgb(148, 138, 138);
+    }
+    
+    .projLink:hover {
+        color: white;
+        border-color: white;
+    }
+    
+    .projLink #div1 {
+        margin-right: 1rem;
+    }
+    
+    .projLink #div2 {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        width: 1rem;
+        height: 1rem;
+    }
+    
+    .onGoingDiv {
+        font-family: Poppins;
+        font-size: 0.8rem;
+        color: yellow;
+        padding-top: 0.2rem;
+        padding-left: 0.3rem;
+        padding-bottom: 0.2rem;
+        padding-right: 0.3rem;
+        margin-left: 0.6rem;
+        border-radius: 10px;
+        border: 1px solid yellow;
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1100px) {
     .projCompContainer {
-      width: 100%;
+        padding: 0px;
+        margin: 0px;
+        margin-right:10rem;
+        margin-bottom:5.5rem;
+        float: left;
+        width: 25%;
+    }
+    
+    .projCompDiv1 {
+        position: relative;
+        border-radius: 15px;
+        width:18.4rem;
+        height:19rem;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .projCompDiv2 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-style:solid;
+        border-width:1px;
+        border-color:white;
+        width: 77%;
+        height: 100%;
+        border-radius: 15px;
+        transition: width 0.3s ease;
+        background-color: #0a192f;
+        padding: 1rem;
+        text-align: left;
+        overflow: hidden;
+    }
+    
+    .projCompDiv2::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,transparent,#fff,transparent);
+        transition: 0.5s;
+    }
+    
+    .projCompDiv2:hover::before {
+        left: 100%;
+    }
+    
+    .projComponents {
+        right: 0;
+        width: 0.8rem;
+        height: 0.8rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        margin-top: 0.8rem;
+        margin-left: 0.8rem;
+    }
+    
+    .projImage {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        width: 100%;
+        height: 47%;
+        border-radius: 15px;   
+    }
+    
+    .projHead {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+    }
+    
+    .projInfo {
+        font-size: 0.5rem;
+    }
+    
+    .projLink {
+        position: absolute;
+        font-size: 0.6rem;
+        padding: 0.5rem;
+        width: max-content;
+        height: max-content;
+        border: 1px solid rgb(110, 101, 101);
+        border-radius: 5px;
+        right: 0.7rem;
+        bottom: 0.7rem;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: rgb(148, 138, 138);
+    }
+    
+    .projLink:hover {
+        color: white;
+        border-color: white;
+    }
+    
+    .projLink #div1 {
+        margin-right: 1rem;
+    }
+    
+    .projLink #div2 {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        width: 1rem;
+        height: 1rem;
+    }
+    
+    .onGoingDiv {
+        font-family: Poppins;
+        font-size: 0.6rem;
+        color: yellow;
+        padding-top: 0.2rem;
+        padding-left: 0.3rem;
+        padding-bottom: 0.2rem;
+        padding-right: 0.3rem;
+        margin-left: 0.6rem;
+        border-radius: 10px;
+        border: 1px solid yellow;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .projCompContainer {
+        padding: 0px;
+        margin: 0px;
+        margin-right:12.5rem;
+        margin-bottom:5.5rem;
+        float: left;
+        width: 25%;
+    }
+    
+    .projCompDiv1 {
+        position: relative;
+        border-radius: 15px;
+        width:16.8rem;
+        height:18rem;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .projCompDiv2 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-style:solid;
+        border-width:1px;
+        border-color:white;
+        width: 77%;
+        height: 100%;
+        border-radius: 15px;
+        transition: width 0.3s ease;
+        background-color: #0a192f;
+        padding: 1rem;
+        text-align: left;
+        overflow: hidden;
+    }
+    
+    .projCompDiv2::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,transparent,#fff,transparent);
+        transition: 0.5s;
+    }
+    
+    .projCompDiv2:hover::before {
+        left: 100%;
+    }
+    
+    .projComponents {
+        right: 0;
+        width: 0.8rem;
+        height: 0.8rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        margin-top: 0.5rem;
+        margin-left: 0.5rem;
+    }
+    
+    .projImage {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        width: 100%;
+        height: 47%;
+        border-radius: 15px;   
+    }
+    
+    .projHead {
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+    }
+    
+    .projInfo {
+        font-size: 0.5rem;
+    }
+    
+    .projLink {
+        position: absolute;
+        font-size: 0.6rem;
+        padding: 0.5rem;
+        width: max-content;
+        height: max-content;
+        border: 1px solid rgb(110, 101, 101);
+        border-radius: 5px;
+        right: 0.7rem;
+        bottom: 0.7rem;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: rgb(148, 138, 138);
+    }
+    
+    .projLink:hover {
+        color: white;
+        border-color: white;
+    }
+    
+    .projLink #div1 {
+        margin-right: 1rem;
+    }
+    
+    .projLink #div2 {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        width: 1rem;
+        height: 1rem;
+    }
+    
+    .onGoingDiv {
+        font-family: Poppins;
+        font-size: 0.6rem;
+        color: yellow;
+        padding-top: 0.2rem;
+        padding-left: 0.3rem;
+        padding-bottom: 0.2rem;
+        padding-right: 0.3rem;
+        margin-left: 0.6rem;
+        border-radius: 10px;
+        border: 1px solid yellow;
+    }
+}
+
+@media screen and (max-width: 365px) {
+    .projCompContainer {
+        padding: 0px;
+        margin: 0px;
+        margin-right:10rem;
+        margin-bottom:5.5rem;
+        float: left;
+        width: 25%;
+    }
+    
+    .projCompDiv1 {
+        position: relative;
+        border-radius: 15px;
+        width:13.4rem;
+        height:13rem;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .projCompDiv2 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-style:solid;
+        border-width:1px;
+        border-color:white;
+        width: 75%;
+        height: 100%;
+        border-radius: 15px;
+        transition: width 0.3s ease;
+        background-color: #0a192f;
+        padding: 1rem;
+        text-align: left;
+        overflow: hidden;
+    }
+    
+    .projCompDiv2::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,transparent,#fff,transparent);
+        transition: 0.5s;
+    }
+    
+    .projCompDiv2:hover::before {
+        left: 100%;
+    }
+    
+    .projComponents {
+        right: 0;
+        width: 0.6rem;
+        height: 0.6rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        margin-top: 0.5rem;
+        margin-left: 0.4rem;
+    }
+    
+    .projImage {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        width: 100%;
+        height: 47%;
+        border-radius: 15px;   
+    }
+    
+    .projHead {
+        font-size: 0.7rem;
+        margin-bottom: 0.4rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+    }
+    
+    .projInfo {
+        font-size: 0.34rem;
+    }
+    
+    .projLink {
+        position: absolute;
+        font-size: 0.45rem;
+        padding: 0.5rem;
+        width: max-content;
+        height: max-content;
+        border: 1px solid rgb(110, 101, 101);
+        border-radius: 5px;
+        right: 0.7rem;
+        bottom: 0.7rem;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: rgb(148, 138, 138);
+    }
+    
+    .projLink:hover {
+        color: white;
+        border-color: white;
+    }
+    
+    .projLink #div1 {
+        margin-right: 1rem;
+    }
+    
+    .projLink #div2 {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+    
+    .onGoingDiv {
+        font-family: Poppins;
+        font-size: 0.6rem;
+        color: yellow;
+        padding-top: 0.2rem;
+        padding-left: 0.3rem;
+        padding-bottom: 0.2rem;
+        padding-right: 0.3rem;
+        margin-left: 0.6rem;
+        border-radius: 10px;
+        border: 1px solid yellow;
     }
 }

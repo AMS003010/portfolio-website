@@ -96,6 +96,10 @@ html, body {
     font-size: 4rem;
   }
 
+  .mainProjectsContainer {
+    height: 200vh;
+  }
+
   @media screen and (max-width: 1300px) {
     .introHome {
       font-family: Inter; 
@@ -152,6 +156,10 @@ html, body {
       display: flex;
       flex-direction: row;
       align-items: center;
+    }
+
+    .projectsWrapper h1 {
+      font-size: 3.5rem;
     }
   }
 
@@ -215,6 +223,14 @@ html, body {
       display: flex;
       flex-direction: row;
       align-items: center;
+    }
+
+    .projectsWrapper h1 {
+      font-size: 2.5rem;
+    }
+
+    .mainProjectsContainer {
+      height: 100vh;
     }
 
   }
@@ -343,6 +359,10 @@ html, body {
     .introHome {
       width: 95%;
     }
+
+    .projectsWrapper h1 {
+      font-size: 2rem;
+    }
   }
 
   @media screen and (max-width: 365px) {
@@ -405,6 +425,10 @@ html, body {
       display: flex;
       flex-direction: row;
       align-items: center;
+    }
+
+    .projectsWrapper h1 {
+      font-size: 1.5rem;
     }
 
   }
