@@ -34,6 +34,22 @@
     background-color: #0a192f;
     padding: 1rem;
     text-align: left;
+    overflow: hidden;
+}
+
+.projCompDiv2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,transparent,#fff,transparent);
+    transition: 0.5s;
+}
+
+.projCompDiv2:hover::before {
+    left: 100%;
 }
 
 .projComponents {
@@ -57,9 +73,11 @@
 }
 
 .projHead {
-    font-size: 2rem;
+    font-size: 1.3rem;
     margin-bottom: 0.4rem;
     font-weight: 900;
+    display: flex;
+    align-items: center;
 }
 
 .projInfo {
@@ -97,6 +115,19 @@
     background-position: center top;
     width: 1rem;
     height: 1rem;
+}
+
+.onGoingDiv {
+    font-family: Poppins;
+    font-size: 0.8rem;
+    color: yellow;
+    padding-top: 0.2rem;
+    padding-left: 0.3rem;
+    padding-bottom: 0.2rem;
+    padding-right: 0.3rem;
+    margin-left: 0.6rem;
+    border-radius: 10px;
+    border: 1px solid yellow;
 }
 
 @media screen and (max-width: 992px) {

@@ -3,7 +3,7 @@ import './index.css';
 
 import linkIcon from '../img/link.png';
 
-const ProjectComp = ({ components,pic,info,link,head }) => {
+const ProjectComp = ({ components,pic,info,link,head,onGoing }) => {
   return (
     <div className='projCompContainer'>
       <div className='projCompDiv1'>
@@ -12,7 +12,9 @@ const ProjectComp = ({ components,pic,info,link,head }) => {
         ))}
         <div className='projCompDiv2'>
             <img src={pic} className='projImage' alt='j'/>
-            <div className='projHead'>{head}</div>
+            <div className='projHead'>
+              {head}{onGoing ? (<div className='onGoingDiv'>ongoing</div>) : (<div></div>)}
+            </div>
             <div className='projInfo'>{info}</div>
             <a className='projLink' href={link} target='blank'>
                 <div id='div1'>View Repository</div>
