@@ -29,6 +29,8 @@ div {
     margin-left: 2rem;
     padding-bottom: 2px;
     cursor: pointer;
+    text-decoration: none;
+    color: #64ffda;
 }
 
 .logoDiv span:hover {
@@ -41,6 +43,7 @@ div {
     left: 0;
     bottom: 0;
     width: 100%;
+    border-radius: 5px;
     height: 2px;
     background-color: #ff8c6e;
     transform: scaleX(0);

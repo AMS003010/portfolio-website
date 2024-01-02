@@ -34,17 +34,10 @@ const Projects = () => {
         margin:'0px'
     }
 
-    const divStyle = {
-        marginLeft:'4.9rem',
-        marginRight:'4.9rem',
-        marginTop:'3.5rem',
-        alignItems:'center'
-    }
-
     return(
         <div style={myStyle} className="mainProjectsContainer">
             <NavBar/>
-            <div style={divStyle} className="projectsWrapper">
+            <div className="projectsWrapper">
                 <h1 style={{marginBottom:'5rem'}}>My Projects</h1>
                 <div className="projectsContainer" >
                     <ProjectComp 

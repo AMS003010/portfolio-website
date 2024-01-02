@@ -321,13 +321,13 @@
     
     .projComponents {
         right: 0;
-        width: 0.8rem;
-        height: 0.8rem;
+        width: 0.85rem;
+        height: 0.85rem;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center top;
-        margin-top: 0.8rem;
-        margin-left: 0.8rem;
+        margin-top: 0.85rem;
+        margin-left: 0.75rem;
     }
     
     .projImage {
@@ -433,7 +433,7 @@
         border-radius: 15px;
         transition: width 0.3s ease;
         background-color: #0a192f;
-        padding: 1rem;
+        padding: 0.8rem;
         text-align: left;
         overflow: hidden;
     }
@@ -455,13 +455,13 @@
     
     .projComponents {
         right: 0;
-        width: 0.8rem;
-        height: 0.8rem;
+        width: 0.9rem;
+        height: 0.9rem;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center top;
-        margin-top: 0.5rem;
-        margin-left: 0.5rem;
+        margin-top: 0.75rem;
+        margin-left: 0.65rem;
     }
     
     .projImage {
@@ -567,7 +567,7 @@
         border-radius: 15px;
         transition: width 0.3s ease;
         background-color: #0a192f;
-        padding: 1rem;
+        padding: 0.5rem;
         text-align: left;
         overflow: hidden;
     }
@@ -589,13 +589,13 @@
     
     .projComponents {
         right: 0;
-        width: 0.6rem;
-        height: 0.6rem;
+        width: 0.8rem;
+        height: 0.8rem;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center top;
-        margin-top: 0.5rem;
-        margin-left: 0.4rem;
+        margin-top: 0.7rem;
+        margin-left: 0.7rem;
     }
     
     .projImage {
@@ -604,7 +604,7 @@
         background-position: center top;
         width: 100%;
         height: 47%;
-        border-radius: 15px;   
+        border-radius: 8px;   
     }
     
     .projHead {
@@ -616,13 +616,13 @@
     }
     
     .projInfo {
-        font-size: 0.34rem;
+        font-size: 0.33rem;
     }
     
     .projLink {
         position: absolute;
-        font-size: 0.45rem;
-        padding: 0.5rem;
+        font-size: 0.4rem;
+        padding: 0.2rem;
         width: max-content;
         height: max-content;
         border: 1px solid rgb(110, 101, 101);
@@ -648,13 +648,13 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center top;
-        width: 0.8rem;
-        height: 0.8rem;
+        width: 0.65rem;
+        height: 0.65rem;
     }
     
     .onGoingDiv {
         font-family: Poppins;
-        font-size: 0.6rem;
+        font-size: 0.4rem;
         color: yellow;
         padding-top: 0.2rem;
         padding-left: 0.3rem;

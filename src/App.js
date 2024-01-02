@@ -1,9 +1,10 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 
-//import Home from "./pages/home";
-import HexagonAnimation from "./component/landing/lander";
-import InProgress from "./component/inProgress/inProgress";
+import Home from "./pages/home";
 import Projects from "./pages/projects";
+import AboutMe from "./pages/About me";
+import HexagonAnimation from "./component/landing/lander";
+//import InProgress from "./component/inProgress/inProgress";
 
 function App() {
   return (
@@ -17,11 +18,15 @@ function App() {
           />
           <Route
             path="/portfolio-website/home"
+            element={<Home />}
+          />
+          <Route
+            path="/portfolio-website/projects"
             element={<Projects />}
           />
           <Route
-            path="/portfolio-website/end"
-            element={<InProgress />}
+            path="/portfolio-website/about-me"
+            element={<AboutMe />}
           />
         </Routes>
       </div>
