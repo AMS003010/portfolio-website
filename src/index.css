@@ -128,7 +128,7 @@ html, body {
   }
   
   .aboutMeMainContainer {
-    height: 100vh;
+    height: 120vh;
   }
 
   @media screen and (max-width: 1300px) {
