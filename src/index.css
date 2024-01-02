@@ -103,6 +103,34 @@ html, body {
     height: 200vh;
   }
 
+  .aboutMeWrapper {
+    padding: 0px;
+    margin: 0px;
+    margin-left: 4.9rem;
+  }
+
+  .aboutMeWrapper h1 {
+    font-family: Poppins;
+    font-size: 4rem;
+    color: #64ffda;
+    margin-top: 5rem;
+  }
+
+  .aboutMeContainer {
+    width: 80%;
+    font-family: Poppins;
+    font-size: 1.2rem;
+    color: #64ffda;
+  }
+
+  .aboutMeContainer b {
+    font-size: 1.5rem;
+  }
+  
+  .aboutMeMainContainer {
+    height: 100vh;
+  }
+
   @media screen and (max-width: 1300px) {
     .introHome {
       font-family: Inter; 
@@ -251,6 +279,34 @@ html, body {
       height: 100vh;
     }
 
+    .aboutMeWrapper {
+      padding: 0px;
+      margin: 0px;
+      margin-left: 4.9rem;
+    }
+  
+    .aboutMeWrapper h1 {
+      font-family: Poppins;
+      font-size: 3rem;
+      color: #64ffda;
+      margin-top: 4rem;
+    }
+  
+    .aboutMeContainer {
+      width: 80%;
+      font-family: Poppins;
+      font-size: 1.1rem;
+      color: #64ffda;
+    }
+  
+    .aboutMeContainer b {
+      font-size: 1.5rem;
+    }
+    
+    .aboutMeMainContainer {
+      height: 140vh;
+    }
+
   }
 
   @media screen and (max-width: 550px) {
@@ -314,12 +370,40 @@ html, body {
     .introHome {
       width: 90%;
     }
+
+    .aboutMeWrapper {
+      padding: 0px;
+      margin: 0px;
+      margin-left: 4.9rem;
+    }
+  
+    .aboutMeWrapper h1 {
+      font-family: Poppins;
+      font-size: 2.7rem;
+      color: #64ffda;
+      margin-top: 4rem;
+    }
+  
+    .aboutMeContainer {
+      width: 80%;
+      font-family: Poppins;
+      font-size: 1rem;
+      color: #64ffda;
+    }
+  
+    .aboutMeContainer b {
+      font-size: 1.3rem;
+    }
+    
+    .aboutMeMainContainer {
+      height: 140vh;
+    }
   }
 
   @media screen and (max-width: 450px) {
     .introHome {
       font-family: Inter; 
-      font-size:2.2rem;
+      font-size:2rem;
       color:#64ffda;
       font-weight: 700;
       margin-top: 5rem;
@@ -348,7 +432,7 @@ html, body {
   
     .introHome .homeName {
       font-family: Inter;
-      font-size: 2.2rem;
+      font-size: 2rem;
       background-image: linear-gradient(to right,#fdb96f,#ff746d);
       background-clip: text;
       color: transparent;
@@ -387,6 +471,34 @@ html, body {
 
     .projectsWrapper h1 {
       font-size: 2.5rem;
+    }
+
+    .aboutMeWrapper {
+      padding: 0px;
+      margin: 0px;
+      margin-left: 2.9rem;
+    }
+  
+    .aboutMeWrapper h1 {
+      font-family: Poppins;
+      font-size: 2.2rem;
+      color: #64ffda;
+      margin-top: 5rem;
+    }
+  
+    .aboutMeContainer {
+      width: 80%;
+      font-family: Poppins;
+      font-size: 0.94rem;
+      color: #64ffda;
+    }
+  
+    .aboutMeContainer b {
+      font-size: 1rem;
+    }
+    
+    .aboutMeMainContainer {
+      height: 180vh;
     }
   }
 
@@ -454,6 +566,34 @@ html, body {
 
     .projectsWrapper h1 {
       font-size: 2rem;
+    }
+
+    .aboutMeWrapper {
+      padding: 0px;
+      margin: 0px;
+      margin-left: 2.9rem;
+    }
+  
+    .aboutMeWrapper h1 {
+      font-family: Poppins;
+      font-size: 1.8rem;
+      color: #64ffda;
+      margin-top: 5rem;
+    }
+  
+    .aboutMeContainer {
+      width: 80%;
+      font-family: Poppins;
+      font-size: 1rem;
+      color: #64ffda;
+    }
+  
+    .aboutMeContainer b {
+      font-size: 1.5rem;
+    }
+    
+    .aboutMeMainContainer {
+      height: 180vh;
     }
 
   }
@@ -527,5 +667,32 @@ html, body {
     .projectsWrapper h1 {
       font-size: 1.7rem;
     }
-
+    
+    .aboutMeWrapper {
+      padding: 0px;
+      margin: 0px;
+      margin-left: 1.9rem;
+    }
+  
+    .aboutMeWrapper h1 {
+      font-family: Poppins;
+      font-size: 1.5rem;
+      color: #64ffda;
+      margin-top: 5rem;
+    }
+  
+    .aboutMeContainer {
+      width: 80%;
+      font-family: Poppins;
+      font-size: 1rem;
+      color: #64ffda;
+    }
+  
+    .aboutMeContainer b {
+      font-size: 1.5rem;
+    }
+    
+    .aboutMeMainContainer {
+      height: 230vh;
+    }
   }
