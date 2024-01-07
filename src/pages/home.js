@@ -14,8 +14,6 @@ const Home = () => {
 
     const divStyle = {
         display: 'flex',
-        marginLeft:'3.3rem',
-        marginRight:'3.3rem'
     }
 
     return(

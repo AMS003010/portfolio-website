@@ -16,6 +16,11 @@ html, body {
     background: radial-gradient(at top left, #0d2951, #0a192f);
     overflow: hidden;
   }
+
+  .introHomeContainer {
+    margin-left: 3.3rem;
+    margin-right: 3.3rem;
+  }
   
   .introHome {
     font-family: Inter; 
@@ -401,9 +406,15 @@ html, body {
   }
 
   @media screen and (max-width: 450px) {
+
+    .introHomeContainer {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+
     .introHome {
       font-family: Inter; 
-      font-size:2rem;
+      font-size:2.4rem;
       color:#64ffda;
       font-weight: 700;
       margin-top: 5rem;
@@ -411,28 +422,28 @@ html, body {
   
     .introHome .homeDesc {
       font-family: Poppins;
-      font-size: 0.8rem;
+      font-size: 1rem;
       color:rgb(159, 148, 148);
       font-weight: 100;
     }
   
     .introHome .homeDesc div{
       font-family: Poppins;
-      font-size: 1rem;
+      font-size: 1.2rem;
       color:#64ffda;
       font-weight: 700;
     }
   
     .introHome .homeDesc div span{
       font-family: Inter;
-      font-size: 2rem;
+      font-size: 2.1rem;
       color:#64ffda;
       font-weight: 900;
     }
   
     .introHome .homeName {
       font-family: Inter;
-      font-size: 2rem;
+      font-size: 2.4rem;
       background-image: linear-gradient(to right,#fdb96f,#ff746d);
       background-clip: text;
       color: transparent;
@@ -440,8 +451,8 @@ html, body {
     }
 
     .socialHomeIcon {
-      width: 1.4rem;
-      height: 1.4rem;
+      width: 1.6rem;
+      height: 1.6rem;
     }
 
     .socialHomeLink:hover {
@@ -452,7 +463,7 @@ html, body {
       text-decoration: none;
       margin-right: 1rem;
       color: wheat;
-      font-size: 0.7rem;
+      font-size: 0.9rem;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -465,8 +476,9 @@ html, body {
     .projectsWrapper {
       font-family: Michroma;
       color: #64ffda;
-      margin-left: 4.1rem;
+      margin-left: 2.5rem;
       margin-right: 2.9rem;
+      margin-top: 2.5rem;
     }
 
     .projectsWrapper h1 {
@@ -476,12 +488,12 @@ html, body {
     .aboutMeWrapper {
       padding: 0px;
       margin: 0px;
-      margin-left: 2.9rem;
+      margin-left: 2.1rem;
     }
   
     .aboutMeWrapper h1 {
       font-family: Poppins;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       color: #64ffda;
       margin-top: 5rem;
     }
@@ -489,7 +501,7 @@ html, body {
     .aboutMeContainer {
       width: 80%;
       font-family: Poppins;
-      font-size: 0.94rem;
+      font-size: 1rem;
       color: #64ffda;
     }
   

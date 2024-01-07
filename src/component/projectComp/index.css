@@ -411,8 +411,8 @@
     .projCompDiv1 {
         position: relative;
         border-radius: 15px;
-        width:16.8rem;
-        height:18rem;
+        width:19.8rem;
+        height:19rem;
         background: rgba(255, 255, 255, 0.2);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -428,7 +428,7 @@
         border-style:solid;
         border-width:1px;
         border-color:white;
-        width: 77%;
+        width: 79%;
         height: 100%;
         border-radius: 15px;
         transition: width 0.3s ease;
@@ -455,12 +455,12 @@
     
     .projComponents {
         right: 0;
-        width: 0.9rem;
-        height: 0.9rem;
+        width: 1.1rem;
+        height: 1.1rem;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center top;
-        margin-top: 0.75rem;
+        margin-top: 0.95rem;
         margin-left: 0.65rem;
     }
     
@@ -470,11 +470,11 @@
         background-position: center top;
         width: 100%;
         height: 47%;
-        border-radius: 15px;   
+        border-radius: 9px;   
     }
     
     .projHead {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         margin-bottom: 0.4rem;
         font-weight: 900;
         display: flex;
@@ -482,7 +482,7 @@
     }
     
     .projInfo {
-        font-size: 0.5rem;
+        font-size: 0.6rem;
     }
     
     .projLink {
@@ -520,14 +520,14 @@
     
     .onGoingDiv {
         font-family: Poppins;
-        font-size: 0.6rem;
+        font-size: 0.7rem;
         color: yellow;
         padding-top: 0.2rem;
         padding-left: 0.3rem;
         padding-bottom: 0.2rem;
         padding-right: 0.3rem;
         margin-left: 0.6rem;
-        border-radius: 10px;
+        border-radius: 8px;
         border: 1px solid yellow;
     }
 }

@@ -92,14 +92,14 @@
     }
     
     .logoContainer img {
-        width: 2rem;
-        height: 2rem;
+        width: 2.1rem;
+        height: 2.1rem;
         margin-right: 0.3rem;
     }
     
     .logoContainer span {
         font-family: Michroma;
-        font-size: 1rem;
+        font-size: 1.3rem;
         color: #64ffda;
     }
 }
