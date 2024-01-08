@@ -1,7 +1,7 @@
 .projCompContainer {
     padding: 0px;
     margin: 0px;
-    margin-right:6.5rem;
+    margin-right:6rem;
     margin-bottom:5.5rem;
     float: left;
     width: 25%;
@@ -665,3 +665,41 @@
         border: 1px solid yellow;
     }
 }
+
+@media screen and (max-width: 300px) {
+    .projCompContainer {
+        margin-bottom: 4rem;
+    }
+
+    .projCompDiv1 {
+        width:14.4rem;
+        height:14rem;
+    }
+    
+    .projComponents {
+        width: 0.8rem;
+        height: 0.8rem;
+        margin-top: 0.7rem;
+        margin-left: 0.55rem;
+    }
+
+    .projHead {
+        font-size: 0.8rem;
+    }
+
+    .projInfo {
+        font-size: 0.4rem;
+    }
+
+    .projLink {
+        font-size: 0.5rem;
+        padding: 0.3rem;
+        right: 0.7rem;
+        bottom: 0.7rem;
+    }
+
+    .onGoingDiv {
+        font-size: 0.5rem;
+        border-radius: 8px;
+    }
+} 

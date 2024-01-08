@@ -271,7 +271,7 @@ html, body {
     .projectsWrapper {
       font-family: Michroma;
       color: #64ffda;
-      margin-left: 6.9rem;
+      margin-left: 6.5rem;
       margin-right: 0.9rem;
       margin-top: 4.5rem;
     }
@@ -623,24 +623,28 @@ html, body {
   }
 
   @media screen and (max-width: 300px) {
+    .introHomeContainer {
+      margin-left: 1.3rem;
+    }
+
     .introHome {
       font-family: Inter; 
-      font-size:4rem;
+      font-size:1.7rem;
       color:#64ffda;
       font-weight: 700;
-      margin-top: 5rem;
+      margin-top: 2rem;
     }
   
     .introHome .homeDesc {
       font-family: Poppins;
-      font-size: 1.2rem;
+      font-size: 0.8rem;
       color:rgb(159, 148, 148);
       font-weight: 100;
     }
   
     .introHome .homeDesc div{
       font-family: Poppins;
-      font-size: 1.2rem;
+      font-size: 0.8rem;
       color:#64ffda;
       font-weight: 700;
     }
@@ -654,7 +658,7 @@ html, body {
   
     .introHome .homeName {
       font-family: Inter;
-      font-size: 4rem;
+      font-size: 1.7rem;
       background-image: linear-gradient(to right,#fdb96f,#ff746d);
       background-clip: text;
       color: transparent;
@@ -662,8 +666,8 @@ html, body {
     }
 
     .socialHomeIcon {
-      width: 2rem;
-      height: 2rem;
+      width: 1.2rem;
+      height: 1.2rem;
     }
 
     .socialHomeLink:hover {
@@ -674,7 +678,7 @@ html, body {
       text-decoration: none;
       margin-right: 1rem;
       color: wheat;
-      font-size: 1.1rem;
+      font-size: 0.6rem;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -683,8 +687,8 @@ html, body {
     .projectsWrapper {
       font-family: Michroma;
       color: #64ffda;
-      margin-left: 1.9rem;
-      margin-right: 2.9rem;
+      margin-left: 1.4rem;
+      margin-right: 1.4rem;
       margin-top: 1.3rem;
     }
 
