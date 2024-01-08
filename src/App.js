@@ -3,7 +3,7 @@ import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Home from "./pages/home";
 import Projects from "./pages/projects";
 import AboutMe from "./pages/About me";
-import HexagonAnimation from "./component/landing/lander";
+//import HexagonAnimation from "./component/landing/lander";
 //import InProgress from "./component/inProgress/inProgress";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route
             path="/portfolio-website"
-            element={<HexagonAnimation />}
+            element={<Home />}
           />
           <Route
             path="/portfolio-website/home"
