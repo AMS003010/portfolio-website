@@ -545,8 +545,8 @@
     .projCompDiv1 {
         position: relative;
         border-radius: 15px;
-        width:13.4rem;
-        height:13rem;
+        width:18.4rem;
+        height:18rem;
         background: rgba(255, 255, 255, 0.2);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -562,7 +562,7 @@
         border-style:solid;
         border-width:1px;
         border-color:white;
-        width: 75%;
+        width: 80%;
         height: 100%;
         border-radius: 15px;
         transition: width 0.3s ease;
@@ -589,13 +589,13 @@
     
     .projComponents {
         right: 0;
-        width: 0.8rem;
-        height: 0.8rem;
+        width: 1rem;
+        height: 1rem;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center top;
-        margin-top: 0.7rem;
-        margin-left: 0.7rem;
+        margin-top: 0.9rem;
+        margin-left: 0.8rem;
     }
     
     .projImage {
@@ -608,7 +608,7 @@
     }
     
     .projHead {
-        font-size: 0.7rem;
+        font-size: 1rem;
         margin-bottom: 0.4rem;
         font-weight: 900;
         display: flex;
@@ -616,13 +616,13 @@
     }
     
     .projInfo {
-        font-size: 0.33rem;
+        font-size: 0.5rem;
     }
     
     .projLink {
         position: absolute;
-        font-size: 0.4rem;
-        padding: 0.2rem;
+        font-size: 0.7rem;
+        padding: 0.4rem;
         width: max-content;
         height: max-content;
         border: 1px solid rgb(110, 101, 101);

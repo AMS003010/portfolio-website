@@ -451,8 +451,8 @@ html, body {
     }
 
     .socialHomeIcon {
-      width: 1.6rem;
-      height: 1.6rem;
+      width: 1.7rem;
+      height: 1.7rem;
     }
 
     .socialHomeLink:hover {
@@ -461,9 +461,9 @@ html, body {
   
     .socialHomeLink {
       text-decoration: none;
-      margin-right: 1rem;
+      margin-right: 0.8rem;
       color: wheat;
-      font-size: 0.9rem;
+      font-size: 1rem;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -476,8 +476,8 @@ html, body {
     .projectsWrapper {
       font-family: Michroma;
       color: #64ffda;
-      margin-left: 2.5rem;
-      margin-right: 2.9rem;
+      margin-left: 2.6rem;
+      margin-right: 2.5rem;
       margin-top: 2.5rem;
     }
 
@@ -515,9 +515,15 @@ html, body {
   }
 
   @media screen and (max-width: 365px) {
+
+    .introHomeContainer {
+      margin-left: 1.7rem;
+      margin-right: 1.7rem;
+    }
+
     .introHome {
       font-family: Inter; 
-      font-size:1.8rem;
+      font-size:2.2rem;
       color:#64ffda;
       font-weight: 700;
       margin-top: 5rem;
@@ -525,7 +531,7 @@ html, body {
   
     .introHome .homeDesc {
       font-family: Poppins;
-      font-size: 0.5rem;
+      font-size: 0.9rem;
       color:rgb(159, 148, 148);
       font-weight: 100;
     }
@@ -539,14 +545,14 @@ html, body {
   
     .introHome .homeDesc div span{
       font-family: Inter;
-      font-size: 2rem;
+      font-size: 2.1rem;
       color:#64ffda;
       font-weight: 900;
     }
   
     .introHome .homeName {
       font-family: Inter;
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       background-image: linear-gradient(to right,#fdb96f,#ff746d);
       background-clip: text;
       color: transparent;
@@ -558,8 +564,8 @@ html, body {
     }
 
     .socialHomeIcon {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 1.6rem;
+      height: 1.6rem;
     }
 
     .socialHomeLink:hover {
@@ -568,12 +574,18 @@ html, body {
   
     .socialHomeLink {
       text-decoration: none;
-      margin-right: 1rem;
+      margin-right: 0.8rem;
       color: wheat;
-      font-size: 0.6rem;
+      font-size: 0.7rem;
       display: flex;
       flex-direction: row;
       align-items: center;
+    }
+
+    .projectsWrapper {
+      margin-left: 2.1rem;
+      margin-right: 2.1rem;
+      margin-top: 2.2rem;
     }
 
     .projectsWrapper h1 {
@@ -583,12 +595,12 @@ html, body {
     .aboutMeWrapper {
       padding: 0px;
       margin: 0px;
-      margin-left: 2.9rem;
+      margin-left: 2.1rem;
     }
   
     .aboutMeWrapper h1 {
       font-family: Poppins;
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       color: #64ffda;
       margin-top: 5rem;
     }
