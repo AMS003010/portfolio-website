@@ -17,6 +17,10 @@ html, body {
     overflow: hidden;
   }
 
+  .homeMainContainer {
+    height: 200vh;
+  }
+
   .introHomeContainer {
     margin-left: 3.3rem;
     margin-right: 3.3rem;
@@ -136,6 +140,145 @@ html, body {
     height: 120vh;
   }
 
+  .button-86 {
+    all: unset;
+    width: 10rem;
+    height: 3rem;
+    font-family: Poppins;
+    font-weight: 900;
+    font-size: 1.16rem;
+    background: transparent;
+    border: none;
+    position: relative;
+    color: #0c1e3a;
+    cursor: pointer;
+    z-index: 1;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .button-86::after,
+  .button-86::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -99999;
+    transition: all .4s;
+  }
+
+  .button-86::before {
+    transform: translate(0%, 0%);
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right,#fdb96f,#ff746d);
+    border-radius: 10px;
+  }
+
+  .button-86::after {
+    transform: translate(10px, 10px);
+    width: 35px;
+    height: 35px;
+    background: #ffffff15;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 50px;
+  }
+
+  .button-86:hover::before {
+    transform: translate(5%, 20%);
+    width: 110%;
+    height: 110%;
+  }
+
+  .button-86:hover::after {
+    border-radius: 10px;
+    transform: translate(0, 0);
+    width: 100%;
+    height: 100%;
+  }
+
+  .button-86:active::after {
+    transition: 0s;
+    transform: translate(0, 5%);
+  }
+
+  .projButtonContainer {
+    margin-left: 5rem;
+    margin-top: 5rem;
+  }
+
+  .AboutAboutMeWrapper {
+    margin-left: 4rem;
+    margin-top: 2rem;
+  }
+
+  .AboutAboutMeWrapper h1 {
+    font-family: Michroma;
+    font-size: 3rem;
+    color: #64ffda;
+  }
+
+  .AboutAboutMeWrapper .homeAboutMeContainer {
+    display: flex;
+  }
+
+  .homeAboutMeWrapper {
+    margin-left: 4rem;
+    margin-top: 10rem;
+  }
+
+  .homeAboutMeWrapper h1 {
+    font-family: Michroma;
+    font-size: 3rem;
+    color: #64ffda;
+  }
+
+  .homeAboutMeWrapper .homeAboutMeContainer {
+    display: flex;
+  }
+
+  .homeAboutMeContent {
+    width: 50%;
+    font-family: Poppins;
+    font-size: 1.15rem;
+    color: #64ffda;
+  }
+
+  .homeAboutMeContent .conTag {
+    background-image: linear-gradient(to right,#f009c5,#4a19de);
+    font-weight: bolder;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    border-radius: 5px;
+  }
+
+  .homeAboutMeContent .hashTag {
+    background-image: linear-gradient(to right,#09f0d1a9,#0048ff);
+    font-weight: bolder;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    border-radius: 5px;
+    color: greenyellow;
+  }
+
+  .homeAboutMePic {
+    margin-left: 12rem;
+    margin-top: 3rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    width: 25%;
+    height: 25%;
+    border-radius: 20px;
+  }
+
   @media screen and (max-width: 1300px) {
     .introHome {
       font-family: Inter; 
@@ -143,6 +286,10 @@ html, body {
       color:#64ffda;
       font-weight: 700;
       margin-top: 5rem;
+    }
+
+    .homeMainContainer {
+      height: 210vh;
     }
   
     .introHome .homeDesc {
@@ -209,15 +356,19 @@ html, body {
   @media screen and (max-width: 1100px) {
     .introHome {
       font-family: Inter; 
-      font-size:4rem;
+      font-size:3rem;
       color:#64ffda;
       font-weight: 700;
       margin-top: 5rem;
     }
+
+    .homeMainContainer {
+      height: 210vh;
+    }
   
     .introHome .homeDesc {
       font-family: Poppins;
-      font-size: 1.3rem;
+      font-size: 1rem;
       color:rgb(159, 148, 148);
       font-weight: 100;
     }
@@ -238,7 +389,7 @@ html, body {
   
     .introHome .homeName {
       font-family: Inter;
-      font-size: 4rem;
+      font-size: 3rem;
       background-image: linear-gradient(to right,#fdb96f,#ff746d);
       background-clip: text;
       color: transparent;
@@ -312,6 +463,91 @@ html, body {
       height: 140vh;
     }
 
+    .button-86 {
+      all: unset;
+      width: 10rem;
+      height: 3rem;
+      font-family: Poppins;
+      font-weight: 900;
+      font-size: 1.16rem;
+      background: transparent;
+      border: none;
+      position: relative;
+      color: #0c1e3a;
+      cursor: pointer;
+      z-index: 1;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+  
+    .button-86::after,
+    .button-86::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: -99999;
+      transition: all .4s;
+    }
+  
+    .button-86::before {
+      transform: translate(0%, 0%);
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to right,#fdb96f,#ff746d);
+      border-radius: 10px;
+    }
+  
+    .button-86::after {
+      transform: translate(10px, 10px);
+      width: 35px;
+      height: 35px;
+      background: #ffffff15;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border-radius: 50px;
+    }
+  
+    .button-86:hover::before {
+      transform: translate(5%, 20%);
+      width: 110%;
+      height: 110%;
+    }
+  
+    .button-86:hover::after {
+      border-radius: 10px;
+      transform: translate(0, 0);
+      width: 100%;
+      height: 100%;
+    }
+  
+    .button-86:active::after {
+      transition: 0s;
+      transform: translate(0, 5%);
+    }
+
+    .projButtonContainer {
+      margin-left: 4rem;
+      margin-top: 2rem;
+    }
+
+    .homeAboutMeContent {
+      width: 50%;
+      font-family: Poppins;
+      font-size: 0.8rem;
+      color: #64ffda;
+    }
+
+    .homeAboutMePic {
+      margin-left: 8rem;
+      margin-top: 2rem;
+    }
   }
 
   @media screen and (max-width: 550px) {
@@ -401,8 +637,154 @@ html, body {
     }
     
     .aboutMeMainContainer {
-      height: 140vh;
+      height: 170vh;
     }
+
+    .button-86 {
+      all: unset;
+      width: 9rem;
+      height: 2.8rem;
+      font-family: Poppins;
+      font-weight: 900;
+      font-size: 1.16rem;
+      background: transparent;
+      border: none;
+      position: relative;
+      color: #0c1e3a;
+      cursor: pointer;
+      z-index: 1;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+  
+    .button-86::after,
+    .button-86::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: -99999;
+      transition: all .4s;
+    }
+  
+    .button-86::before {
+      transform: translate(0%, 0%);
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to right,#fdb96f,#ff746d);
+      border-radius: 10px;
+    }
+  
+    .button-86::after {
+      transform: translate(10px, 10px);
+      width: 35px;
+      height: 35px;
+      background: #ffffff15;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border-radius: 50px;
+    }
+  
+    .button-86:hover::before {
+      transform: translate(5%, 20%);
+      width: 110%;
+      height: 110%;
+    }
+  
+    .button-86:hover::after {
+      border-radius: 10px;
+      transform: translate(0, 0);
+      width: 100%;
+      height: 100%;
+    }
+  
+    .button-86:active::after {
+      transition: 0s;
+      transform: translate(0, 5%);
+    }
+  
+    .projButtonContainer {
+      margin-left: 5rem;
+      margin-top: 5rem;
+    }
+  
+    .AboutAboutMeWrapper {
+      margin-left: 3rem;
+      margin-top: 2rem;
+    }
+  
+    .AboutAboutMeWrapper h1 {
+      font-family: Michroma;
+      font-size: 2.8rem;
+      color: #64ffda;
+    }
+  
+    .AboutAboutMeWrapper .homeAboutMeContainer {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .homeAboutMeWrapper {
+      margin-left: 3rem;
+      margin-top: 10rem;
+    }
+  
+    .homeAboutMeWrapper h1 {
+      font-family: Michroma;
+      font-size: 2.8rem;
+      color: #64ffda;
+    }
+  
+    .homeAboutMeWrapper .homeAboutMeContainer {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .homeAboutMeContent {
+      width: 90%;
+      font-family: Poppins;
+      font-size: 1rem;
+      color: #64ffda;
+    }
+  
+    .homeAboutMeContent .conTag {
+      background-image: linear-gradient(to right,#f009c5,#4a19de);
+      font-weight: bolder;
+      padding-left: 0.3rem;
+      padding-right: 0.3rem;
+      border-radius: 5px;
+    }
+  
+    .homeAboutMeContent .hashTag {
+      background-image: linear-gradient(to right,#09f0d1a9,#0048ff);
+      font-weight: bolder;
+      padding-left: 0.4rem;
+      padding-right: 0.4rem;
+      border-radius: 5px;
+      color: greenyellow;
+    }
+  
+    .homeAboutMePic {
+      margin-left: 7rem;
+      margin-top: 3rem;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center top;
+      width: 40%;
+      height: 40%;
+      border-radius: 10px;
+    }
+
+    .homeMainContainer {
+      height: 250vh;
+    }
+
   }
 
   @media screen and (max-width: 450px) {
@@ -410,6 +792,10 @@ html, body {
     .introHomeContainer {
       margin-left: 2rem;
       margin-right: 2rem;
+    }
+
+    .homeMainContainer {
+      height: 220vh;
     }
 
     .introHome {
@@ -512,6 +898,150 @@ html, body {
     .aboutMeMainContainer {
       height: 180vh;
     }
+
+    .button-86 {
+      all: unset;
+      width: 8rem;
+      height: 2.5rem;
+      font-family: Poppins;
+      font-weight: 900;
+      font-size: 1rem;
+      background: transparent;
+      border: none;
+      position: relative;
+      color: #0c1e3a;
+      cursor: pointer;
+      z-index: 1;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+  
+    .button-86::after,
+    .button-86::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: -99999;
+      transition: all .4s;
+    }
+  
+    .button-86::before {
+      transform: translate(0%, 0%);
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to right,#fdb96f,#ff746d);
+      border-radius: 10px;
+    }
+  
+    .button-86::after {
+      transform: translate(10px, 10px);
+      width: 35px;
+      height: 35px;
+      background: #ffffff15;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border-radius: 50px;
+    }
+  
+    .button-86:hover::before {
+      transform: translate(5%, 20%);
+      width: 110%;
+      height: 110%;
+    }
+  
+    .button-86:hover::after {
+      border-radius: 10px;
+      transform: translate(0, 0);
+      width: 100%;
+      height: 100%;
+    }
+  
+    .button-86:active::after {
+      transition: 0s;
+      transform: translate(0, 5%);
+    }
+
+    .projButtonContainer {
+      margin-left: 2rem;
+      margin-bottom: 20rem;
+    }
+
+    .AboutAboutMeWrapper {
+      margin-left: 2rem;
+      margin-top: 4rem;
+  }
+
+  .AboutAboutMeWrapper h1 {
+    font-family: Michroma;
+    font-size: 2.5rem;
+    color: #64ffda;
+  }
+
+  .AboutAboutMeWrapper .homeAboutMeContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .homeAboutMeWrapper {
+    margin-left: 2rem;
+    margin-top: 10rem;
+  }
+
+  .homeAboutMeWrapper h1 {
+    font-family: Michroma;
+    font-size: 2.5rem;
+    color: #64ffda;
+  }
+
+  .homeAboutMeWrapper .homeAboutMeContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .homeAboutMeContent {
+    width: 90%;
+    font-family: Poppins;
+    font-size: 0.8rem;
+    color: #64ffda;
+  }
+
+  .homeAboutMeContent .conTag {
+    background-image: linear-gradient(to right,#f009c5,#4a19de);
+    font-weight: bolder;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    border-radius: 5px;
+  }
+
+  .homeAboutMeContent .hashTag {
+    background-image: linear-gradient(to right,#09f0d1a9,#0048ff);
+    font-weight: bolder;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    border-radius: 5px;
+    color: greenyellow;
+  }
+
+  .homeAboutMePic {
+    margin-top: 3rem;
+    margin-left: 2rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    width: 70%;
+    height: 50%;
+    border-radius: 20px;
+  }
+  .homeMainContainer {
+    height: 320vh;
+  }
   }
 
   @media screen and (max-width: 365px) {
@@ -519,6 +1049,10 @@ html, body {
     .introHomeContainer {
       margin-left: 1.7rem;
       margin-right: 1.7rem;
+    }
+
+    .homeMainContainer {
+      height: 220vh;
     }
 
     .introHome {
@@ -618,6 +1152,10 @@ html, body {
     
     .aboutMeMainContainer {
       height: 180vh;
+    }
+
+    .homeMainContainer {
+      height: 270vh;
     }
 
   }
@@ -723,4 +1261,177 @@ html, body {
     .aboutMeMainContainer {
       height: 230vh;
     }
+
+    .aboutMeWrapper {
+      padding: 0px;
+      margin: 0px;
+      margin-left: 2.1rem;
+    }
+  
+    .aboutMeWrapper h1 {
+      font-family: Poppins;
+      font-size: 2.3rem;
+      color: #64ffda;
+      margin-top: 5rem;
+    }
+  
+    .aboutMeContainer {
+      width: 80%;
+      font-family: Poppins;
+      font-size: 1rem;
+      color: #64ffda;
+    }
+  
+    .aboutMeContainer b {
+      font-size: 1rem;
+    }
+    
+    .aboutMeMainContainer {
+      height: 180vh;
+    }
+
+    .button-86 {
+      all: unset;
+      width: 6rem;
+      height: 2.3rem;
+      font-family: Poppins;
+      font-weight: 900;
+      font-size: 0.8rem;
+      background: transparent;
+      border: none;
+      position: relative;
+      color: #0c1e3a;
+      cursor: pointer;
+      z-index: 1;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+  
+    .button-86::after,
+    .button-86::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: -99999;
+      transition: all .4s;
+    }
+  
+    .button-86::before {
+      transform: translate(0%, 0%);
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to right,#fdb96f,#ff746d);
+      border-radius: 10px;
+    }
+  
+    .button-86::after {
+      transform: translate(10px, 10px);
+      width: 35px;
+      height: 35px;
+      background: #ffffff15;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border-radius: 50px;
+    }
+  
+    .button-86:hover::before {
+      transform: translate(5%, 20%);
+      width: 110%;
+      height: 110%;
+    }
+  
+    .button-86:hover::after {
+      border-radius: 10px;
+      transform: translate(0, 0);
+      width: 100%;
+      height: 100%;
+    }
+  
+    .button-86:active::after {
+      transition: 0s;
+      transform: translate(0, 5%);
+    }
+
+    .projButtonContainer {
+      margin-left: 1rem;
+      margin-bottom: 20rem;
+    }
+
+    .AboutAboutMeWrapper {
+    margin-left: 1rem;
+    margin-top: 2rem;
+  }
+
+  .AboutAboutMeWrapper h1 {
+    font-family: Michroma;
+    font-size: 2.1rem;
+    color: #64ffda;
+  }
+
+  .AboutAboutMeWrapper .homeAboutMeContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .homeAboutMeWrapper {
+    margin-left: 2rem;
+    margin-top: 10rem;
+  }
+
+  .homeAboutMeWrapper h1 {
+    font-family: Michroma;
+    font-size: 2.1rem;
+    color: #64ffda;
+  }
+
+  .homeAboutMeWrapper .homeAboutMeContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .homeAboutMeContent {
+    width: 90%;
+    font-family: Poppins;
+    font-size: 0.6rem;
+    color: #64ffda;
+  }
+
+  .homeAboutMeContent .conTag {
+    background-image: linear-gradient(to right,#f009c5,#4a19de);
+    font-weight: bolder;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    border-radius: 5px;
+  }
+
+  .homeAboutMeContent .hashTag {
+    background-image: linear-gradient(to right,#09f0d1a9,#0048ff);
+    font-weight: bolder;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    border-radius: 5px;
+    color: greenyellow;
+  }
+
+  .homeAboutMePic {
+    margin-top: 3rem;
+    margin-left: 0.5rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    width: 80%;
+    height: 50%;
+    border-radius: 10px;
+  }
+
+  .homeMainContainer {
+    height: 260vh;
+  }
   }

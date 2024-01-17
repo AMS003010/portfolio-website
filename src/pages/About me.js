@@ -1,17 +1,22 @@
 import NavBar from "../component/Nav bar/navBar";
 
+import myPic from '../component/img/myPic.jpeg';
+
 const AboutMe = () => {
     return(
         <div className="aboutMeMainContainer">
             <NavBar />
-            <div className="aboutMeWrapper">
-                <h1>Hi!! I am Abhijith😊</h1>
-                <div className="aboutMeContainer">
-                Hello Tech Aficionados! <b>🚀</b><br/><br/>
-                Abhijith M S in the house - a Indian Tech Enthusiast on a relentless quest for knowledge and coding wizardry! When textbooks take a coffee break, I plunge headfirst into the electrifying realms of tech, where innovation is my playground, and possibilities are limitless.<br/><br/>
-                Picture this: a die-hard coding aficionado with a heart that beats in binary. I don't just love tech; I practically breathe code! Whether it's the elegance of MERN Stack, the precision of Python, the raw power of C, the sleekness of Dart, or the magic of Flutter, I'm not just into coding; I'm on a mission to make pixels dance to my commands.<br/><br/>
-                In the ever-evolving tech sphere, I'm not a mere spectator - I'm the front-row VIP soaking in the latest breakthroughs with unbridled excitement. I don't just follow tech trends; I chase them down!<br/><br/>
-                Connect with me, and let's ride this coding rollercoaster together. Passionate, committed, and slightly obsessed with turning caffeine into code. Ready for the next level?
+            <div className="AboutAboutMeWrapper">
+                <h1>About me</h1>
+                <div className="homeAboutMeContainer">
+                    <div className="homeAboutMeContent">
+                        I am Abhijith, a <span className="conTag">passionate</span> and forward-thinking BTECH Computer Science student based in the vibrant city of Bengaluru. Hailing from the picturesque coastal regions of Kerala, I find inspiration in the convergence of technology and innovation.
+                        My journey in the realm of technology is marked by a profound fascination for cutting-edge advancements. From delving into the intricacies of <span className="conTag">Blockchain</span> and the exciting world of web3 to exploring the intricacies of <span className="conTag">Microservice</span> architecture,<span className="conTag">DevOps</span> ,networking, and distributed computation, I am driven by an insatiable curiosity. I find inner peace when working with a build that boasts a stellar <span className="conTag">UI/UX</span>.<br/><br/>
+                        I find particular joy in navigating the complexities of the <span className="conTag">Hyperspace Protocol</span> and the <span className="conTag">Tornado Protocol</span>. Launching <span className="conTag">Containers</span> and <span className="conTag">Pods</span>  is not just a task but a delightful experience that fuels my enthusiasm for the dynamic field of technology.
+                        Ever the avid learner, I am always on the lookout for opportunities to expand my expertise and stay abreast of emerging technologies. The intricate concepts of networking, with their ability to shape the digital landscape, hold a special place in my heart.<br/><br/>
+                        <span className="hashTag">#TechEnthusiast</span> &nbsp;&nbsp;<span className="hashTag">#InnovationLover</span>&nbsp;&nbsp; <span className="hashTag">#ContinuousLearner</span>&nbsp;&nbsp;🚀✨ 
+                    </div>
+                    <img className="homeAboutMePic" src={myPic} alt="Profilepic"/>
                 </div>
             </div>
         </div>
