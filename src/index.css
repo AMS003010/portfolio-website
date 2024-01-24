@@ -794,6 +794,10 @@ html, body {
       margin-right: 2rem;
     }
 
+    .mainProjectsContainer {
+      height: 500vh;
+    }
+
     .homeMainContainer {
       height: 220vh;
     }
