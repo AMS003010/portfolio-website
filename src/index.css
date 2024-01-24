@@ -99,8 +99,8 @@ html, body {
   .projectsWrapper {
     font-family: Michroma;
     color: #64ffda;
-    margin-left: 4.9rem;
-    margin-right: 4.9rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
     margin-top: 3.5rem;
   }
 
@@ -289,7 +289,15 @@ html, body {
     }
 
     .homeMainContainer {
-      height: 210vh;
+      height: 220vh;
+    }
+
+    .mainProjectsContainer {
+      height: 290vh;
+    }
+
+    .aboutMeMainContainer {
+      height: 140vh;
     }
   
     .introHome .homeDesc {
