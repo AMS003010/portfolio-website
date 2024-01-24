@@ -266,10 +266,10 @@ div {
     .logoDiv {
         position: fixed;
         z-index: 4;
-        bottom: 2rem;
+        bottom: 1rem;
         left: 2rem;
         width: 80.5%;
-        font-size: 1rem;
+        font-size: 0.8rem;
         align-items: center;
         display: flex;
         align-content: center;

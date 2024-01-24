@@ -274,8 +274,8 @@ html, body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
-    width: 25%;
-    height: 25%;
+    width: 20%;
+    height: 10%;
     border-radius: 20px;
   }
 
@@ -782,7 +782,7 @@ html, body {
     }
 
     .homeMainContainer {
-      height: 250vh;
+      height: 260vh;
     }
 
   }
@@ -808,14 +808,14 @@ html, body {
   
     .introHome .homeDesc {
       font-family: Poppins;
-      font-size: 1rem;
+      font-size: 0.9rem;
       color:rgb(159, 148, 148);
       font-weight: 100;
     }
   
     .introHome .homeDesc div{
       font-family: Poppins;
-      font-size: 1.2rem;
+      font-size: 1.05rem;
       color:#64ffda;
       font-weight: 700;
     }
@@ -896,16 +896,16 @@ html, body {
     }
     
     .aboutMeMainContainer {
-      height: 180vh;
+      height: 200vh;
     }
 
     .button-86 {
       all: unset;
-      width: 8rem;
-      height: 2.5rem;
+      width: 7rem;
+      height: 2rem;
       font-family: Poppins;
       font-weight: 900;
-      font-size: 1rem;
+      font-size: 0.8rem;
       background: transparent;
       border: none;
       position: relative;
@@ -971,6 +971,7 @@ html, body {
     .projButtonContainer {
       margin-left: 2rem;
       margin-bottom: 20rem;
+      margin-top: 1.1rem;
     }
 
     .AboutAboutMeWrapper {
@@ -1155,7 +1156,7 @@ html, body {
     }
 
     .homeMainContainer {
-      height: 270vh;
+      height: 280vh;
     }
 
   }
@@ -1426,12 +1427,12 @@ html, body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
-    width: 80%;
+    width: 85%;
     height: 50%;
     border-radius: 10px;
   }
 
   .homeMainContainer {
-    height: 260vh;
+    height: 280vh;
   }
   }
