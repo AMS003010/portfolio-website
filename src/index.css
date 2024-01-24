@@ -289,7 +289,7 @@ html, body {
     }
 
     .homeMainContainer {
-      height: 280vh;
+      height: 320vh;
     }
 
     .mainProjectsContainer {
@@ -297,7 +297,7 @@ html, body {
     }
 
     .aboutMeMainContainer {
-      height: 160vh;
+      height: 180vh;
     }
   
     .introHome .homeDesc {
