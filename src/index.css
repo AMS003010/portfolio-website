@@ -18,7 +18,7 @@ html, body {
   }
 
   .homeMainContainer {
-    height: 200vh;
+    height: auto;
   }
 
   .introHomeContainer {
@@ -109,7 +109,7 @@ html, body {
   }
 
   .mainProjectsContainer {
-    height: 200vh;
+    height: auto;
   }
 
   .aboutMeWrapper {
@@ -137,7 +137,7 @@ html, body {
   }
   
   .aboutMeMainContainer {
-    height: 120vh;
+    height: auto;
   }
 
   .button-86 {
@@ -217,6 +217,7 @@ html, body {
   .AboutAboutMeWrapper {
     margin-left: 4rem;
     margin-top: 2rem;
+    margin-bottom: 5rem;
   }
 
   .AboutAboutMeWrapper h1 {
@@ -232,6 +233,7 @@ html, body {
   .homeAboutMeWrapper {
     margin-left: 4rem;
     margin-top: 10rem;
+    margin-bottom: 5rem;
   }
 
   .homeAboutMeWrapper h1 {
@@ -289,15 +291,15 @@ html, body {
     }
 
     .homeMainContainer {
-      height: 320vh;
+      height: auto;
     }
 
     .mainProjectsContainer {
-      height: 290vh;
+      height: auto;
     }
 
     .aboutMeMainContainer {
-      height: 180vh;
+      height: auto;
     }
   
     .introHome .homeDesc {
@@ -371,7 +373,7 @@ html, body {
     }
 
     .homeMainContainer {
-      height: 210vh;
+      height: auto;
     }
   
     .introHome .homeDesc {
@@ -440,7 +442,7 @@ html, body {
     }
 
     .mainProjectsContainer {
-      height: 100vh;
+      height: auto;
     }
 
     .aboutMeWrapper {
@@ -468,7 +470,7 @@ html, body {
     }
     
     .aboutMeMainContainer {
-      height: 140vh;
+      height: auto;
     }
 
     .button-86 {
@@ -645,7 +647,7 @@ html, body {
     }
     
     .aboutMeMainContainer {
-      height: 170vh;
+      height: auto;
     }
 
     .button-86 {
@@ -803,11 +805,11 @@ html, body {
     }
 
     .mainProjectsContainer {
-      height: 550vh;
+      height: auto;
     }
 
     .homeMainContainer {
-      height: 220vh;
+      height: auto;
     }
 
     .introHome {
@@ -908,7 +910,7 @@ html, body {
     }
     
     .aboutMeMainContainer {
-      height: 200vh;
+      height: auto;
     }
 
     .button-86 {
@@ -982,7 +984,7 @@ html, body {
 
     .projButtonContainer {
       margin-left: 2rem;
-      margin-bottom: 20rem;
+      margin-bottom: 27rem;
       margin-top: 1.1rem;
     }
 
@@ -1053,7 +1055,7 @@ html, body {
     border-radius: 20px;
   }
   .homeMainContainer {
-    height: 320vh;
+    height: auto;
   }
   }
 
@@ -1065,7 +1067,7 @@ html, body {
     }
 
     .homeMainContainer {
-      height: 220vh;
+      height: auto;
     }
 
     .introHome {
@@ -1164,11 +1166,11 @@ html, body {
     }
     
     .aboutMeMainContainer {
-      height: 180vh;
+      height: auto;
     }
 
     .homeMainContainer {
-      height: 280vh;
+      height: auto;
     }
 
   }
@@ -1300,7 +1302,7 @@ html, body {
     }
     
     .aboutMeMainContainer {
-      height: 180vh;
+      height: auto;
     }
 
     .button-86 {
@@ -1445,6 +1447,6 @@ html, body {
   }
 
   .homeMainContainer {
-    height: 280vh;
+    height: auto;
   }
   }
