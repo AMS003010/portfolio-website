@@ -1,6 +1,6 @@
 import NavBar from "../component/Nav bar/navBar";
 
-import myPic from '../component/img/myPic.jpeg';
+import myPic from '../component/img/my_pic2.jpeg';
 
 const AboutMe = () => {
     return(
