@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/portfolio-website/static/css/main.17416e5c.css",
-    "main.js": "/portfolio-website/static/js/main.6f768684.js",
+    "main.js": "/portfolio-website/static/js/main.8eb1b60c.js",
     "static/media/Screenshot 2023-12-30 194637.png": "/portfolio-website/static/media/Screenshot 2023-12-30 194637.6044d75ce4d208bbe2ee.png",
+    "static/media/my_pic2.jpeg": "/portfolio-website/static/media/my_pic2.5914384e32030bd212a4.jpeg",
     "static/media/theGallery.png": "/portfolio-website/static/media/theGallery.2834afbf49262fb0e421.png",
     "static/media/urbanEnigma.jpeg": "/portfolio-website/static/media/urbanEnigma.c5c223a8eda30dc4354e.jpeg",
     "static/media/workoutBuddy.png": "/portfolio-website/static/media/workoutBuddy.b09c215733208eb3c284.png",
-    "static/media/myPic.jpeg": "/portfolio-website/static/media/myPic.c171f69ebcc36f27c882.jpeg",
     "static/media/ERC20.png": "/portfolio-website/static/media/ERC20.9920c3a2ce7812d1fdac.png",
     "static/media/quizFlow.png": "/portfolio-website/static/media/quizFlow.4bd9d3676a7dd34be5f1.png",
     "static/media/weatherIO.png": "/portfolio-website/static/media/weatherIO.95410d2f7d72c096e69a.png",
     "static/media/CarbonChain.png": "/portfolio-website/static/media/CarbonChain.f5fe668bf6293dc4e89c.png",
     "index.html": "/portfolio-website/index.html",
     "main.17416e5c.css.map": "/portfolio-website/static/css/main.17416e5c.css.map",
-    "main.6f768684.js.map": "/portfolio-website/static/js/main.6f768684.js.map"
+    "main.8eb1b60c.js.map": "/portfolio-website/static/js/main.8eb1b60c.js.map"
   },
   "entrypoints": [
     "static/css/main.17416e5c.css",
-    "static/js/main.6f768684.js"
+    "static/js/main.8eb1b60c.js"
   ]
 }
