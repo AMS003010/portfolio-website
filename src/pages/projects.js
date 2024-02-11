@@ -9,6 +9,7 @@ import cc from '../component/img/CarbonChain.png';
 import quiz from '../component/img/quizFlow.png';
 import urbanEnig from '../component/img/urbanEnigma.jpeg';
 import theGall from '../component/img/theGallery.png';
+import infino from '../component/img/Infino.png';
 
 import mongodbIcon from '../component/img/mongodb.png';
 import reactIcon from '../component/img/react.png';
@@ -26,6 +27,10 @@ import eth from '../component/img/ethereum.png';
 import cmake from '../component/img/cmake.png';
 import fireB from '../component/img/firebase.png';
 import cpp from '../component/img/c++.png';
+import flaskIcon from '../component/img/flask.png';
+import kube from '../component/img/kubernetes.png';
+import docker from '../component/img/docker.png';
+import nginx from '../component/img/nginx.png'
 
 const Projects = () => {
 
@@ -46,6 +51,13 @@ const Projects = () => {
                         info={"A digital oasis where music and magic intertwine. Powered by the MERN stack, this sleek platform offers a personalized auditory journey. It's not just music; it's a cosmic concert of cool, where technology and melody perform a nightly serenade just for you."}
                         head={'Twilight'}
                         link={'https://github.com/AMS003010/Twilight'}
+                    />
+                    <ProjectComp 
+                        components={[mongodbIcon,expressNode,reactIcon,nodeIcon,flaskIcon,docker,kube,nginx]} 
+                        pic={infino} 
+                        info={"Library Management System incorporating a Microservice Architecture with Docker, KinD and Nginx Ingress"}
+                        head={'Infino-Keeper Of The Books'}
+                        link={'https://github.com/AMS003010/InFino-KeeperOfBooks'}
                     />
                     <ProjectComp 
                         components={[mongodbIcon,expressNode,reactIcon,nodeIcon,html,css,js]} 
