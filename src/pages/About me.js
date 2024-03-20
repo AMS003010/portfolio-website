@@ -1,9 +1,10 @@
 import NavBar from "../component/Nav bar/navBar";
+import Footer from "../component/footer/footer";
 
 import myPic from '../component/img/my_pic2.jpeg';
 
 const AboutMe = () => {
-    return(
+    return( 
         <div className="aboutMeMainContainer">
             <NavBar />
             <div className="AboutAboutMeWrapper">
@@ -19,6 +20,7 @@ const AboutMe = () => {
                     <img className="homeAboutMePic" src={myPic} alt="Profilepic"/>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

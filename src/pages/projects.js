@@ -31,6 +31,7 @@ import flaskIcon from '../component/img/flask.png';
 import kube from '../component/img/kubernetes.png';
 import docker from '../component/img/docker.png';
 import nginx from '../component/img/nginx.png'
+import Footer from "../component/footer/footer";
 
 const Projects = () => {
 
@@ -110,6 +111,7 @@ const Projects = () => {
                     />
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

@@ -6,6 +6,7 @@ import resumeIcon from '../component/img/resume.png';
 import myPic from '../component/img/my_pic2.jpeg';
 
 import { Link } from 'react-router-dom';
+import Footer from "../component/footer/footer";
 
 const Home = () => {
 
@@ -62,6 +63,7 @@ const Home = () => {
                     <img className="homeAboutMePic" src={myPic} alt="Profilepic"/>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }
