@@ -10,6 +10,7 @@ import quiz from '../component/img/quizFlow.png';
 import urbanEnig from '../component/img/urbanEnigma.jpeg';
 import theGall from '../component/img/theGallery.png';
 import infino from '../component/img/Infino.png';
+import kalpana from '../component/img/kalpana.png';
 
 import mongodbIcon from '../component/img/mongodb.png';
 import reactIcon from '../component/img/react.png';
@@ -46,6 +47,13 @@ const Projects = () => {
             <div className="projectsWrapper">
                 <h1 style={{marginBottom:'5rem'}}>My Projects</h1>
                 <div className="projectsContainer" >
+                    <ProjectComp 
+                        components={[mongodbIcon,expressNode,reactIcon,nodeIcon,fireB,html,css,js]} 
+                        pic={kalpana} 
+                        info={"The Official site of Kalpana'24. It hosted imported events like the CTF competition along with the leaderboard."}
+                        head={'Kalpana 2024'}
+                        link={'https://github.com/IEEE-PESIT-Student-Branch/kalpana2024'}
+                    />
                     <ProjectComp 
                         components={[mongodbIcon,expressNode,reactIcon,nodeIcon,fireB,html,css,js]} 
                         pic={twilight} 
