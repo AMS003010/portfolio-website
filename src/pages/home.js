@@ -31,7 +31,7 @@ const Home = () => {
                         Dedicated and Creative with a Flair for Transforming Ideas into Technological Marvels. Currently pursuing my BTech in Computer Science at PES University in Bengaluru. 
                     </div>
                     <div style={{display:'flex'}}>
-                        <a href='https://drive.google.com/file/d/1rcWU7iN_a1p8J9h6r6kZmSQjNjtt4IyZ/view?usp=sharing' target='blank' className="socialHomeLink">
+                        <a href='https://drive.google.com/file/d/1hSDprcA6c7qyl64L28ZIB6-Za8hDsQ9I/view?usp=sharing' target='blank' className="socialHomeLink">
                             <img src={resumeIcon} alt='l' className='socialHomeIcon'/>&nbsp;My Resume
                         </a>
                         <a href='https://www.linkedin.com/in/abhijith-m-s-221855275/' target='blank' className="socialHomeLink">
