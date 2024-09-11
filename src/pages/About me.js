@@ -1,7 +1,7 @@
 import NavBar from "../component/Nav bar/navBar";
 import Footer from "../component/footer/footer";
 
-import myPic from '../component/img/my_pic2.jpeg';
+import myPic from '../component/img/my_pic3.jpeg';
 
 const AboutMe = () => {
     return( 
