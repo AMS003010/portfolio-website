@@ -3,7 +3,7 @@ import NavBar from "../component/Nav bar/navBar";
 import githubIcon from '../component/img/github.png';
 import linkedinIcon from '../component/img/linkedin.png';
 import resumeIcon from '../component/img/resume.png';
-import myPic from '../component/img/my_pic3.jpeg';
+import myPic from '../component/img/my_pic4.jpeg';
 
 import { Link } from 'react-router-dom';
 import Footer from "../component/footer/footer";
