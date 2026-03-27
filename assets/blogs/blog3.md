@@ -1,43 +1,54 @@
 Dockerizing a Rust application with Multi-Stage Builds
 ======================================================
 
-![Sourced from https://www.21analytics.ch/blog/docker-from-scratch-for-rust-applications/](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*O3TVI8eOhADFj2lPfLFbrA.png)
+[![Abhijith M S](https://miro.medium.com/v2/resize:fill:64:64/1*jYWE0Ldgmzrctv-63kLlwQ.jpeg)](https://medium.com/@ams_132?source=post_page---byline--31ac8a5ce7c7---------------------------------------)
 
-[Reference](https://medium.com/@ams_132/dockerizing-a-rust-application-with-multi-stage-builds-31ac8a5ce7c7)
+[Abhijith M S](https://medium.com/@ams_132?source=post_page---byline--31ac8a5ce7c7---------------------------------------)
 
-by [Abhijith M S](https://medium.com/@ams_132?source=post_page---byline--31ac8a5ce7c7---------------------------------------)
+4 min read
 
+·
 
+Jul 8, 2024
 
+[nameless link](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fp%2F31ac8a5ce7c7&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40ams_132%2Fdockerizing-a-rust-application-with-multi-stage-builds-31ac8a5ce7c7&user=Abhijith+M+S&userId=93ef70aee8c8&source=---header_actions--31ac8a5ce7c7---------------------clap_footer------------------)
 
+--
 
+[nameless link](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F31ac8a5ce7c7&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40ams_132%2Fdockerizing-a-rust-application-with-multi-stage-builds-31ac8a5ce7c7&source=---header_actions--31ac8a5ce7c7---------------------bookmark_footer------------------)
+
+Listen
+
+Share
 
 Create a Docker image for your Rust application with minimal image size ⚒️
+
+![Sourced from https://www.21analytics.ch/blog/docker-from-scratch-for-rust-applications/](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*O3TVI8eOhADFj2lPfLFbrA.png)
 
 New to Docker 🧐,
 
 Ever tried building the docker image of your application with just simple/base Dockerfiles, giving you large image sizes ( >800Mb ) which ended up eating up all your RAM.😭
 
-Don't worry 😙, you aren't alone ...
+Don’t worry 😙, you aren’t alone….
 
-Here, I am going to be talking specifically about building a lightweight image for your Rust Application. Will be releasing for other applications in the (not so distant 😅) future ...
+Here, I am going to be talking specifically about building a lightweight image for your Rust Application. Will be releasing for other applications in the (not so distant 😅) future…
 
 > According to [AWS](https://aws.amazon.com/docker/#:~:text=Docker%20is%20a%20software%20platform,tools%2C%20code%2C%20and%20runtime.),
 > 
 > Docker is a software platform that allows you to build, test, and deploy applications quickly. Docker packages software into standardized units called [containers](https://aws.amazon.com/containers/) that have everything the software needs to run including libraries, system tools, code, and runtime. Using Docker, you can quickly deploy and scale applications into any environment and know your code will run.
 > 
-> Chill 😄 It's basically solves the problem of "It RUNS of my MACHINE". It allows you to run your application as a container on any OS having the Docker Daemon ( right now which is practically any OS )
+> Chill_😄_ It’s basically solves the problem of “It RUNS of my MACHINE”. It allows you to run your application as a container on any OS having the Docker Daemon ( right now which is practically any OS )
 
-Let's talk about methods that can be used to make your image as light as possible:
+Let’s talk about methods that can be used to make your image as light as possible:
 
 1.  Using Multi-Stage builds
 2.  Using light weight images like _alpine_, _slim_ etc. to run your executable
 
-Building an image using these methods vs building with a simple/base Dockerfile has a lot of difference in terms of the image size. ( I'm talking about 1Gb <==> 20Mb )
+Building an image using these methods vs building with a simple/base Dockerfile has a lot of difference in terms of the image size. ( I’m talking about 1Gb <==> 20Mb )
 
 That can make quite a lot of difference when dealing with an actual infrastructure. 😤And the best way to understand the difference is to do it firsthand and compare the sizes. 😉
 
-( Psst🐱 I'll be using a simple Rust app for creating the image )
+( Psst🐱 I’ll be using a simple Rust app for creating the image )
 
 > _Repo link_ [_https://github.com/AMS003010/Rust-Docker_](https://github.com/AMS003010/Rust-Docker)
 
@@ -53,9 +64,7 @@ Create an Image with a Simple Dockerfile
 
 ```
 cargo new simple
-```
-
-```
+``````
 cd simple
 nano Dockerfile
 ```
@@ -87,7 +96,7 @@ After the image has been built, check for in the docker images
 
 You can see that the image “simple-rust-app” that we built has a size of 1.42Gb 🤯.
 
-Let's now see the optimized way to do it ...
+Let’s now see the optimized way to do it…
 
 Create an Image with Multi-Stage Builds
 ---------------------------------------
@@ -96,7 +105,7 @@ Here we are going to be using the same Rust application but with changes only to
 
 Just notice, how by adding few more lines to your _Dockerfile_ will give you a light and optimized build.
 
-So what are we doing in Multi-Stage Build🧐...
+So what are we doing in Multi-Stage Build🧐…
 
 Our main focus here is to have only the final executable which is run on a minimal _distro_ like _alpine_ to give us the most optimized performance. This includes compilers like _rustc,_ package managers like _cargo_ and even build artifacts which are not actually required and should not be included in the final image. So all the unnecessary components have to be removed.
 
@@ -107,7 +116,7 @@ Also, some security practices tips 💡
 1.  The executable should be run on the base image as a non-privileged user and not as root user.
 2.  The number of packages should be kept minimal as necessary, because fewer packages means fewer vulnerability risks ( also smaller size😤 ).
 
-Now that we have understood Multi-Stage Builds let's implement. Paste the below into your Dockerfile.
+Now that we have understood Multi-Stage Builds let’s implement. Paste the below into your Dockerfile.
 
 ```
 ARG RUST_VERSION=1.75.0
@@ -155,7 +164,7 @@ Now build it with
 docker build -t rust-app-with-multi-stage-build .
 ```
 
-Once the build has completed, let's compare the build sizes 🤔
+Once the build has completed, let’s compare the build sizes 🤔
 
 ![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Mrj2MwAGkuXZKRf9gV6wWQ.png)
 

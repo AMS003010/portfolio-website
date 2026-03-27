@@ -1,17 +1,29 @@
 Building Hyphora: A Distributed KV Store with a Bitcask Soul
 ============================================================
 
-![Generated on Leonardo.ai](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ptpoKDh38uBfQpyH3_5ywA.jpeg)
+[![Abhijith M S](https://miro.medium.com/v2/resize:fill:64:64/1*jYWE0Ldgmzrctv-63kLlwQ.jpeg)](https://medium.com/@ams_132?source=post_page---byline--3f44c4ff9ba8---------------------------------------)
 
-[Reference](https://medium.com/@ams_132/building-hyphora-a-distributed-kv-store-with-a-bitcask-soul-3f44c4ff9ba8)
+[Abhijith M S](https://medium.com/@ams_132?source=post_page---byline--3f44c4ff9ba8---------------------------------------)
 
-by [Abhijith M S](https://medium.com/@ams_132?source=post_page---byline--3f44c4ff9ba8---------------------------------------)
+7 min read
 
+·
 
+Nov 16, 2025
 
+[nameless link](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fp%2F3f44c4ff9ba8&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40ams_132%2Fbuilding-hyphora-a-distributed-kv-store-with-a-bitcask-soul-3f44c4ff9ba8&user=Abhijith+M+S&userId=93ef70aee8c8&source=---header_actions--3f44c4ff9ba8---------------------clap_footer------------------)
 
+--
+
+[nameless link](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F3f44c4ff9ba8&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40ams_132%2Fbuilding-hyphora-a-distributed-kv-store-with-a-bitcask-soul-3f44c4ff9ba8&source=---header_actions--3f44c4ff9ba8---------------------bookmark_footer------------------)
+
+Listen
+
+Share
 
 This is about my experience building [**_Hyphora_**](https://github.com/AMS003010/Hyphora) and why I built it 😅
+
+![Generated on Leonardo.ai](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ptpoKDh38uBfQpyH3_5ywA.jpeg)
 
 Hyphora is a distributed Key-Value store with a bitcask storage backend inspired by how each unit in the mycelium maintains consensus of their biological composition with each other.
 

@@ -1,17 +1,29 @@
 Cache It or Lose It: The Power⚡of LRU
 =====================================
 
-![Generated with Leonardo.ai](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RPnlhU4_oqvHf6CAab_pxQ.jpeg)
+[![Abhijith M S](https://miro.medium.com/v2/resize:fill:64:64/1*jYWE0Ldgmzrctv-63kLlwQ.jpeg)](https://medium.com/@ams_132?source=post_page---byline--b669b43e527b---------------------------------------)
 
-[Reference](https://medium.com/@ams_132/cache-it-or-lose-it-the-power-of-lru-b669b43e527b)
+[Abhijith M S](https://medium.com/@ams_132?source=post_page---byline--b669b43e527b---------------------------------------)
 
-by [Abhijith M S](https://medium.com/@ams_132?source=post_page---byline--b669b43e527b---------------------------------------)
+7 min read
 
+·
 
+Jan 8, 2025
 
+[nameless link](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fp%2Fb669b43e527b&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40ams_132%2Fcache-it-or-lose-it-the-power-of-lru-b669b43e527b&user=Abhijith+M+S&userId=93ef70aee8c8&source=---header_actions--b669b43e527b---------------------clap_footer------------------)
 
+--
+
+[nameless link](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Fb669b43e527b&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40ams_132%2Fcache-it-or-lose-it-the-power-of-lru-b669b43e527b&source=---header_actions--b669b43e527b---------------------bookmark_footer------------------)
+
+Listen
+
+Share
 
 All that you need to know about Caching and a implementation of LRU Caching in Rust 🦀
+
+![Generated with Leonardo.ai](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*RPnlhU4_oqvHf6CAab_pxQ.jpeg)
 
 What is a Cache ?
 -----------------

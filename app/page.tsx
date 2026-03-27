@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import localFont from "next/font/local";
 import { useEffect, useRef, useState } from "react";
 
@@ -60,6 +61,14 @@ function FadeSection({
   );
 }
 
+const navLinks = [
+  { label: "writings", href: "/blogs" },
+  { label: "gallery", href: "/gallery" },
+  { label: "pow", href: "/pow" },
+  { label: "my reads", href: "/reads" },
+  { label: "linkstash", href: "/linkstash" },
+];
+
 export default function Home() {
   return (
     <div
@@ -85,6 +94,37 @@ export default function Home() {
       />
 
       <div className="text-white w-[92%] md:w-[52%] lg:w-[44%] flex flex-col my-24 relative z-10">
+
+        {/* ── Top Nav ── */}
+        <FadeSection delay={0} className="mb-16">
+          <nav className="flex flex-wrap gap-x-5 gap-y-2">
+            {navLinks.map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                className="text-xs"
+                style={{
+                  color: "#555",
+                  textDecoration: "none",
+                  borderBottom: "1px solid #2a2a2a",
+                  paddingBottom: "1px",
+                  transition: "color 0.2s, border-color 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "#aaa";
+                  e.currentTarget.style.borderColor = "#666";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "#555";
+                  e.currentTarget.style.borderColor = "#2a2a2a";
+                }}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+        </FadeSection>
+
         {/* ── Header ── */}
         <FadeSection delay={0}>
           <header>
@@ -329,6 +369,7 @@ export default function Home() {
                 "Raspberry Pi 4 (2 GB)",
                 "Raspberry Pi 5 (16 GB)",
                 "TP-Link Archer C7 Router",
+                "TP-Link TL-SG105E Switch",
                 "Cat 6 Ethernet cables",
                 "2 x 128 GB micro SD cards (SSDs coming)",
                 "...",
@@ -459,40 +500,6 @@ export default function Home() {
               </li>
             ))}
           </ul>
-        </FadeSection>
-
-        {/* ── Nav Links ── */}
-        <FadeSection delay={60} className="mt-20">
-          <div
-            style={{
-              height: "1px",
-              background:
-                "linear-gradient(to right, transparent, rgba(255,255,255,0.07), transparent)",
-            }}
-          />
-          <div className="mt-8 flex gap-6">
-            <a
-              href="/blogs"
-              style={{
-                color: "#444",
-                textDecoration: "none",
-                fontSize: "0.75rem",
-                borderBottom: "1px solid #2a2a2a",
-                paddingBottom: "1px",
-                transition: "color 0.2s, border-color 0.2s",
-              }}
-              onMouseEnter={(e) => {
-                (e.target as HTMLElement).style.color = "#aaa";
-                (e.target as HTMLElement).style.borderColor = "#555";
-              }}
-              onMouseLeave={(e) => {
-                (e.target as HTMLElement).style.color = "#444";
-                (e.target as HTMLElement).style.borderColor = "#2a2a2a";
-              }}
-            >
-              writings ↗
-            </a>
-          </div>
         </FadeSection>
 
         {/* ── Footer ── */}
