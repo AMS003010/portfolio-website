@@ -95,7 +95,7 @@ fn main(){
 
 Here we initialize a struct **_Cache_** which creates a HashMap on instantiating the **_Cache_** struct. A HashMap is a data structure that is used to store and retrieve values based on keys. **_set_** and **_get_** methods are added in order to insert key-value pairs and retrieve value based on the key respectively.
 
-This is a very basic implementation of a cache. Now let’s add more features and make it more efficient. 😋
+This is a very basic implementation of a cache. Now let's add more features and make it more efficient. 😋
 
 ### Implementing an eviction policy
 
@@ -107,7 +107,7 @@ The cache will have a fixed size due to which we will have to decide which data 
 *   Time-Based Expiration (TTL or Time-to-Live)
 *   Weighted Least Recently Used (WLRU)
 *   Segmented LRU (SLRU)
-*   _and many more …_
+*   _and many more ..._
 
 We will be using Least Recently Used (LRU) as the eviction policy. An LRU cache evicts the least recently accessed item when the cache reaches its capacity in order to add new items into the cache.
 
@@ -304,7 +304,7 @@ fn main() {
 }
 ```
 
-Each node in the list contains a key-value pair, and the list maintains pointers to the most and least recently used items. When an item is accessed or added, it’s moved to the front of the list. If the cache exceeds its capacity, the item at the end of the list (the least recently used item) is removed.
+Each node in the list contains a key-value pair, and the list maintains pointers to the most and least recently used items. When an item is accessed or added, it's moved to the front of the list. If the cache exceeds its capacity, the item at the end of the list (the least recently used item) is removed.
 
 References
 ----------
@@ -316,8 +316,6 @@ Hope you enjoyed it !!!
 
 Stay tuned and Do make sure to check out my articles [@ams_132](https://medium.com/@ams_132) !!!
 
-_Do_ 👏 _If you liked the article_
+So always remember _Everything's faster when you cache your way through life._ 😉
 
-So always remember _Everything’s faster when you cache your way through life._😉
-
-_Sayonara until next time…_
+_Sayonara until next time..._

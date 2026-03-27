@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getBlogBySlug, getAllBlogs } from "@/lib/blogs";
-import { HoverLink, HoverExternalLink } from "@/components/HoverLink";
+import { HoverLink } from "@/components/HoverLink";
 
 const demFont = localFont({
   src: "../../../assets/fonts/NaruMonoDemo-Regular.ttf",
@@ -78,7 +78,7 @@ export default async function BlogPage({
           ← all writings
         </HoverLink>
 
-        {/* Title */}
+        {/* Title + Date + Duration */}
         <h1
           className="text-2xl leading-snug"
           style={{ letterSpacing: "-0.01em", color: "#e0e0e0" }}
@@ -86,15 +86,13 @@ export default async function BlogPage({
           {blog.title}
         </h1>
 
-        {/* Reference link */}
-        {blog.referenceUrl && (
-          <HoverExternalLink
-            href={blog.referenceUrl}
-            className="text-xs mt-2 inline-block"
-          >
-            originally published on{" "}
-            {new URL(blog.referenceUrl).hostname.replace("www.", "")} ↗
-          </HoverExternalLink>
+        {/* Date and reading time */}
+        {(blog.date || blog.duration) && (
+          <div className="text-sm mt-2" style={{ color: "#666" }}>
+            {blog.date}
+            {blog.date && blog.duration && " · "}
+            {blog.duration}
+          </div>
         )}
 
         {/* Divider */}

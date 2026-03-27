@@ -54,7 +54,7 @@ export default function BlogsPage() {
               Writings
             </h1>
             <div className="text-sm" style={{ color: "#555" }}>
-              things I found worth writing about
+              things I found cool writing about
             </div>
           </div>
 
@@ -99,10 +99,13 @@ export default function BlogsPage() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  {blog.referenceUrl && (
-                    <span className="text-xs" style={{ color: "#3a3a3a" }}>
-                      originally on{" "}
-                      {new URL(blog.referenceUrl).hostname.replace("www.", "")}
+
+                  {/* Date + Duration */}
+                  {(blog.date || blog.duration) && (
+                    <span className="text-xs" style={{ color: "#555" }}>
+                      {blog.date}
+                      {blog.date && blog.duration && " · "}
+                      {blog.duration}
                     </span>
                   )}
                 </div>

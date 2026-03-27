@@ -33,16 +33,16 @@ Derived from Hyphae (/ˈhʌɪfə/) -- the branching filaments that
 make up the mycelium of a fungus
 ```
 
-Are you one of those people who’d rather tinker your way through a problem in the hardest possible way instead of simply spending money 💸 and choosing the easy route?
+Are you one of those people who'd rather tinker your way through a problem in the hardest possible way instead of simply spending money 💸 and choosing the easy route?
 Well, I definitely am 😝.
 
-That’s exactly what happened when I built my makeshift home lab. It gave me a sense of freedom like nothing else (and also kept me from breaking things on my academic laptop 😅).
+That's exactly what happened when I built my makeshift home lab. It gave me a sense of freedom like nothing else (and also kept me from breaking things on my academic laptop 😅).
 
 I enjoy diving into random topics I stumble across on the internet from [_distro hopping_](https://mrsauravsahu.medium.com/getting-started-with-linux-a-guide-to-distro-hopping-2cd4c58bfb22) to [_zero allocation logging_](https://github.com/rs/zerolog), from [_appreciating random rices_](https://www.reddit.com/search/?q=ricing+linux&cId=e4ba3ea5-50de-4642-b9b4-d7b3ae5a2086&iId=5c257236-2abc-446e-9c93-66868b290908) to exploring [_flat buffers_](https://flatbuffers.dev/) and of course, playing Minecraft.
 
 I always wanted something in my home lab that could
 
-*   store _{ “WORLD_SEED” = “712394561” }_ in each of my servers (mostly _raspberry pi’s_ 😝) in my home lab
+*   store _{ "WORLD_SEED" = "712394561" }_ in each of my servers (mostly _raspberry pi's_ 😝) in my home lab
 *   allow for a file on one node (like _rockyou.txt_ 😈_)_ to be available across multiple nodes
 
 Building a distributed key-value store seemed like the solution (also because I wanted to build something this cool 😏 from a long time).
@@ -55,7 +55,7 @@ Main components of Hyphora🌿
 ----------------------------
 
 *   **_Key-Value store_** (Built from scratch)
-*   **_Raft_** (Using Hashicorp’s Raft library)
+*   **_Raft_** (Using Hashicorp's Raft library)
 *   **_Bitcask_** (Built from scratch)
 
 ### Key-Value store
@@ -87,7 +87,7 @@ The main components of _bitcask_ are
 
 ![Components of Bitcask](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*LEOWCspzlRf9-KKuoRXtLQ.png)
 
-I’ll tell later why there are duplicate values for the several keys in the _data-*.db_ files in the image. Hold tight ! 🙃
+I'll tell later why there are duplicate values for the several keys in the _data-*.db_ files in the image. Hold tight ! 🙃
 
 _So how does it work_ 🧐 _Lets take an example_
 
@@ -117,7 +117,7 @@ Now how does delete happen 🧐
 
 Here if we were to delete _ore_spawn_rate_ then a _tombstone_ is inserted into the _data-1.db_ and the key is removed from the _hashmap._ A _tombstone_ is simply a marker value to indicate that the key has been deleted.
 
-This is how it will look …
+This is how it will look ...
 
 ![After deleting ore_spawn_rate](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*v9SVV9cmERj8x1CSKtrmgQ.png)
 
@@ -127,7 +127,7 @@ Superb 🥳 we have all these working !!
 *   Get a _key_
 *   Delete a _key_
 
-Lets now talk about the append-only files …
+Lets now talk about the append-only files ...
 
 Whenever the size of a append-only file reaches a threshold (could be the size of the file) then it closes that file and opens the next one to append the _{ key : value }_ pair. So the files go on as _data-0.db_, _data-1.db_, _data-2.db_, _data-3.db_ etc.
 
@@ -135,9 +135,9 @@ Have you noticed something, what if we kept entries to the same _key,_ the appen
 
 _Compaction is a process where you run through all the files and get all the keys along with their latest value and then write it to a new set of append-only files replacing the old one, due to which you massively reduce the number of files. Compaction is a very expensive operation and it happens periodically to ensure the database does not grow too big._
 
-Lets now talk about the in-memory _hashmap_ …
+Lets now talk about the in-memory _hashmap_ ...
 
-One of the major drawbacks of the _Bitcask_ paradigm is that the size of the in-memory _hashmap_ is limited by the available RAM. In general, keys tend to be small, while values can range from a single word to an entire file. So imagine storing a _hashmap_ whose values are _insanely_ large in RAM —
+One of the major drawbacks of the _Bitcask_ paradigm is that the size of the in-memory _hashmap_ is limited by the available RAM. In general, keys tend to be small, while values can range from a single word to an entire file. So imagine storing a _hashmap_ whose values are _insanely_ large in RAM -
 this will inevitably lead to an out-of-memory problem! 💀
 
 A solution to this is to store the _key_ and the file-name and seek-value for the _value_ in the _hashmap._
@@ -153,7 +153,7 @@ Looks like we have a distributed key-value store now allowing for add, get, dele
 
 ![A cluster of nodes](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*yYeHCdvxEnIWHlxVnzrXZg.png)
 
-My 2nd requirement is being able to replicate a file to all nodes. Imagine I’m working on _Node D_ having file _File_1.txt_. I want the same file to be available in other nodes. 😤 (_For some weird reason_ 😅)
+My 2nd requirement is being able to replicate a file to all nodes. Imagine I'm working on _Node D_ having file _File_1.txt_. I want the same file to be available in other nodes. 😤 (_For some weird reason_ 😅)
 
 Since I already had a functional distributed key-value store, I decided to reuse it 😅 because a file can be represented as _{ key : value }_ pair where _file_name_ can serve as the _key_ and the _file_content_ can serve as the _value_.
 
@@ -170,4 +170,4 @@ Check out [_Hyphora_](https://github.com/AMS003010/Hyphora) !!
 
 _Do_ 👏 _If you liked the article and check out my articles_ [_@ams_132_](https://medium.com/@ams_132) _!!!_
 
-_Sayonara until next time…_
+_Sayonara until next time..._
