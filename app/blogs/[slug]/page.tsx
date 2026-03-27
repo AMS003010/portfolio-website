@@ -12,7 +12,10 @@ const demFont = localFont({
 });
 
 export async function generateStaticParams() {
-  return getAllBlogs().map((b) => ({ slug: b.slug }));
+  const blogs = getAllBlogs();
+  return blogs.map((blog) => ({
+    slug: blog.slug,           // now uses title-based slug
+  }));
 }
 
 export async function generateMetadata({

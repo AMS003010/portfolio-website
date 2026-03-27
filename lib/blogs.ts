@@ -1,13 +1,15 @@
 import fs from "fs";
 import path from "path";
+import crypto from "crypto";
 
 export interface BlogMeta {
-  slug: string;
+  slug: string;           // e.g. "dockerizing-a-rust-application-with-multi-stage-builds-7e9dab"
   title: string;
   date: string | null;
   duration: string | null;
   referenceUrl: string | null;
   coverImage: string | null;
+  fileSlug: string;       // original filename without .md (for internal file lookup)
 }
 
 export interface Blog extends BlogMeta {
@@ -15,6 +17,30 @@ export interface Blog extends BlogMeta {
 }
 
 const BLOGS_DIR = path.join(process.cwd(), "assets", "blogs");
+
+// Convert title to clean URL slug + short unique hash
+// Convert title to clean URL slug + short unique hash (using title + date)
+function slugify(title: string, date: string | null): string {
+  const baseSlug = title
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "")     // remove special characters
+    .replace(/\s+/g, "-")             // replace spaces with -
+    .replace(/-+/g, "-")              // collapse multiple dashes
+    .replace(/^-|-$/g, "");           // trim leading/trailing dashes
+
+  // Create hash seed from title + date (date makes it more unique)
+  const seed = date ? `${title}-${date}` : title;
+
+  // Generate short unique hash (first 6 chars of MD5)
+  const hash = crypto
+    .createHash("md5")
+    .update(seed)
+    .digest("hex")
+    .slice(0, 6);
+
+  return `${baseSlug}-${hash}`;
+}
 
 function parseMarkdown(raw: string): {
   title: string;
@@ -26,7 +52,7 @@ function parseMarkdown(raw: string): {
 } {
   const lines = raw.split("\n");
 
-  // Extract title (setext style: Title\n====)
+  // Extract title (setext style)
   let title = "Untitled";
   let titleLineIndex = -1;
 
@@ -48,14 +74,13 @@ function parseMarkdown(raw: string): {
     contentLines.shift();
   }
 
-  // === Skip Medium metadata until "Listen" + "Share" block ===
+  // Skip Medium metadata until after "Listen Share"
   let i = 0;
   let skippedListenShare = false;
 
   while (i < contentLines.length) {
     const trimmed = contentLines[i].trim();
 
-    // If we hit "Listen" followed shortly by "Share", stop skipping after them
     if (trimmed === "Listen") {
       skippedListenShare = true;
       i++;
@@ -63,18 +88,15 @@ function parseMarkdown(raw: string): {
     }
 
     if (skippedListenShare && trimmed === "Share") {
-      i++; // skip the Share line too
-      // Now skip any remaining blank lines after Share
-      while (i < contentLines.length && contentLines[i].trim() === "") {
-        i++;
-      }
-      break; // Start keeping content from here onward
+      i++;
+      while (i < contentLines.length && contentLines[i].trim() === "") i++;
+      break;
     }
 
-    // Skip all typical Medium junk before Listen/Share
+    // Skip junk
     if (
       trimmed === "" ||
-      trimmed.includes("resize:fill:64:64") ||   // author avatar
+      trimmed.includes("resize:fill:64:64") ||
       trimmed.startsWith("[Abhijith M S]") ||
       trimmed.includes("min read") ||
       (trimmed.includes("·") && trimmed.match(/[A-Za-z]+ \d+, \d{4}/)) ||
@@ -87,28 +109,22 @@ function parseMarkdown(raw: string): {
       continue;
     }
 
-    // If we reach real content before finding Listen/Share, stop skipping
-    if (trimmed.length > 20) {
-      break;
-    }
-
+    if (trimmed.length > 20) break;
     i++;
   }
 
-  // Keep everything from this point onward
   contentLines = contentLines.slice(i);
-
   const remaining = contentLines.join("\n").trim();
 
   // Extract cover image
   const imgMatch = remaining.match(/!\[([^\]]*)\]\(([^)]+)\)/);
   const coverImage = imgMatch ? imgMatch[2] : null;
 
-  // Extract reference URL (if any)
+  // Extract reference URL
   const refMatch = remaining.match(/\[Reference\]\(([^)]+)\)/);
   const referenceUrl = refMatch ? refMatch[1] : null;
 
-  // Extract duration and date
+  // Extract date and duration
   let date: string | null = null;
   let duration: string | null = null;
 
@@ -118,7 +134,7 @@ function parseMarkdown(raw: string): {
     date = metaMatch[2];
   }
 
-  // Final content: remove the cover image line from the body (it will be shown separately)
+  // Clean content (remove cover image line from body)
   const content = remaining
     .split("\n")
     .filter((line) => {
@@ -141,10 +157,21 @@ export function getAllBlogs(): BlogMeta[] {
     .filter((f) => f.endsWith(".md"));
 
   const blogs = files.map((file) => {
-    const slug = file.replace(/\.md$/, "");
+    const fileSlug = file.replace(/\.md$/, "");
     const raw = fs.readFileSync(path.join(BLOGS_DIR, file), "utf-8");
     const { title, date, duration, referenceUrl, coverImage } = parseMarkdown(raw);
-    return { slug, title, date, duration, referenceUrl, coverImage };
+    
+    const cleanSlug = slugify(title, date);   // ← pass date here
+
+    return {
+      slug: cleanSlug,
+      title,
+      date,
+      duration,
+      referenceUrl,
+      coverImage,
+      fileSlug,
+    };
   });
 
   // Sort by date (newest first)
@@ -157,10 +184,24 @@ export function getAllBlogs(): BlogMeta[] {
 }
 
 export function getBlogBySlug(slug: string): Blog | null {
-  const filePath = path.join(BLOGS_DIR, `${slug}.md`);
+  const allBlogs = getAllBlogs();
+  const blogMeta = allBlogs.find((b) => b.slug === slug);
+  if (!blogMeta) return null;
+
+  const filePath = path.join(BLOGS_DIR, `${blogMeta.fileSlug}.md`);
   if (!fs.existsSync(filePath)) return null;
 
   const raw = fs.readFileSync(filePath, "utf-8");
   const { title, date, duration, referenceUrl, coverImage, content } = parseMarkdown(raw);
-  return { slug, title, date, duration, referenceUrl, coverImage, content };
+
+  return {
+    slug,
+    title,
+    date,
+    duration,
+    referenceUrl,
+    coverImage,
+    content,
+    fileSlug: blogMeta.fileSlug,
+  };
 }
