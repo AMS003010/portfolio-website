@@ -3,8 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import localFont from "next/font/local";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import galleryData from "@/assets/gallery.json";
+
+const INITIAL_COUNT = 12;
+const BATCH_SIZE = 12;
 
 const demFont = localFont({
   src: "../../assets/fonts/NaruMonoDemo-Regular.ttf",
@@ -221,15 +224,21 @@ function Lightbox({
   );
 }
 
-// Masonry column layout
+// Masonry column layout with infinite scroll
 function MasonryGallery({
-  items,
+  allItems,
   onSelect,
 }: {
-  items: GalleryItem[];
+  allItems: GalleryItem[];
   onSelect: (index: number) => void;
 }) {
   const [columns, setColumns] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  const [loading, setLoading] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
+  const hasMore = visibleCount < allItems.length;
+  const items = useMemo(() => allItems.slice(0, visibleCount), [allItems, visibleCount]);
 
   useEffect(() => {
     const update = () => {
@@ -243,6 +252,29 @@ function MasonryGallery({
     return () => window.removeEventListener("resize", update);
   }, []);
 
+  // Sentinel observer — fires when bottom of grid comes into view
+  useEffect(() => {
+    if (!hasMore) return;
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !loading) {
+          setLoading(true);
+          // Small artificial delay so the spinner is visible
+          setTimeout(() => {
+            setVisibleCount((c) => Math.min(c + BATCH_SIZE, allItems.length));
+            setLoading(false);
+          }, 400);
+        }
+      },
+      { rootMargin: "300px" },
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [hasMore, loading, allItems.length]);
+
   // Distribute items into columns
   const cols: GalleryItem[][] = Array.from({ length: columns }, () => []);
   const colIndices: number[][] = Array.from({ length: columns }, () => []);
@@ -253,29 +285,84 @@ function MasonryGallery({
   });
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: `repeat(${columns}, 1fr)`,
-        gap: "3px",
-      }}
-    >
-      {cols.map((col, ci) => (
-        <div key={ci} style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
-          {col.map((item, ri) => {
-            const globalIndex = colIndices[ci][ri];
-            return (
-              <GalleryTile
-                key={item["file-name"]}
-                item={item}
-                index={globalIndex}
-                onSelect={onSelect}
-              />
-            );
-          })}
+    <>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: `repeat(${columns}, 1fr)`,
+          gap: "3px",
+        }}
+      >
+        {cols.map((col, ci) => (
+          <div key={ci} style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
+            {col.map((item, ri) => {
+              const globalIndex = colIndices[ci][ri];
+              return (
+                <GalleryTile
+                  key={item["file-name"]}
+                  item={item}
+                  index={globalIndex}
+                  onSelect={onSelect}
+                />
+              );
+            })}
+          </div>
+        ))}
+      </div>
+
+      {/* Sentinel + loader */}
+      <div ref={sentinelRef} style={{ height: "1px" }} />
+      {loading && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "2.5rem 0",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "0.65rem",
+              color: "#333",
+              letterSpacing: "0.08em",
+              fontFamily: "inherit",
+            }}
+          >
+            loading
+            <LoadingDots />
+          </span>
         </div>
-      ))}
-    </div>
+      )}
+      {!hasMore && items.length > 0 && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "2rem 0",
+          }}
+        >
+          <span style={{ fontSize: "0.6rem", color: "#2a2a2a", fontFamily: "inherit" }}>
+            · · ·
+          </span>
+        </div>
+      )}
+    </>
+  );
+}
+
+function LoadingDots() {
+  return (
+    <>
+      <style>{`
+        @keyframes blink { 0%,80%,100%{opacity:0} 40%{opacity:1} }
+        .ld span { animation: blink 1.4s infinite both; }
+        .ld span:nth-child(2) { animation-delay: 0.2s; }
+        .ld span:nth-child(3) { animation-delay: 0.4s; }
+      `}</style>
+      <span className="ld" style={{ marginLeft: "2px" }}>
+        <span>.</span><span>.</span><span>.</span>
+      </span>
+    </>
   );
 }
 
@@ -453,7 +540,7 @@ export default function GalleryPage() {
 
         {/* Full-width masonry grid */}
         <div style={{ width: "92%", margin: "0 auto" }}>
-          <MasonryGallery items={items} onSelect={setLightboxIndex} />
+          <MasonryGallery allItems={items} onSelect={setLightboxIndex} />
         </div>
 
         {/* Footer */}
