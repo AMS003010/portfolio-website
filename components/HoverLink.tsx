@@ -1,6 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+
+const ink     = "#2c1810";
+const inkFade = "#5a3e2b";
 
 export function HoverLink({
   href,
@@ -11,17 +15,22 @@ export function HoverLink({
   children: React.ReactNode;
   className?: string;
 }) {
+  const [hovered, setHovered] = useState(false);
   return (
     <Link
       href={href}
       className={className}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
-        color: "#444",
+        fontFamily: "'Caveat', cursive",
+        fontSize: 16,
+        color: hovered ? ink : inkFade,
         textDecoration: "none",
-        transition: "color 0.2s",
+        borderBottom: `1px dashed ${hovered ? "rgba(44,24,16,0.5)" : "rgba(44,24,16,0.2)"}`,
+        paddingBottom: 1,
+        transition: "color 0.2s, border-color 0.2s",
       }}
-      onMouseEnter={(e) => ((e.currentTarget.style.color = "#888"))}
-      onMouseLeave={(e) => ((e.currentTarget.style.color = "#444"))}
     >
       {children}
     </Link>
@@ -37,26 +46,23 @@ export function HoverExternalLink({
   children: React.ReactNode;
   className?: string;
 }) {
+  const [hovered, setHovered] = useState(false);
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       className={className}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
-        color: "#444",
+        fontFamily: "'Caveat', cursive",
+        fontSize: 16,
+        color: hovered ? ink : "#1a5276",
         textDecoration: "none",
-        borderBottom: "1px solid #2a2a2a",
-        paddingBottom: "1px",
-        transition: "color 0.2s, border-color 0.2s",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.color = "#888";
-        e.currentTarget.style.borderColor = "#555";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.color = "#444";
-        e.currentTarget.style.borderColor = "#2a2a2a";
+        borderBottom: "1px dashed #1a5276",
+        paddingBottom: 1,
+        transition: "color 0.2s",
       }}
     >
       {children}

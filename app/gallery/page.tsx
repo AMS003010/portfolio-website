@@ -2,80 +2,56 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import localFont from "next/font/local";
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import galleryData from "@/assets/gallery.json";
 
 const INITIAL_COUNT = 12;
 const BATCH_SIZE = 12;
-
-const demFont = localFont({
-  src: "../../assets/fonts/NaruMonoDemo-Regular.ttf",
-  weight: "400",
-  style: "normal",
-});
-
 const BASE_URL = "http://100.120.36.86:30070/gallery";
+
+const ink     = "#2c1810";
+const inkFade = "#5a3e2b";
 
 interface GalleryItem {
   "file-name": string;
   description: string;
 }
 
-function useFadeIn() {
+// ── Fade-in hook ─────────────────────────────────────────────────────────────
+function useFadeIn(threshold = 0.05) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.05 },
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold },
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
-
+  }, [threshold]);
   return { ref, visible };
 }
 
-function FadeSection({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const { ref, visible } = useFadeIn();
+// ── Loading dots ─────────────────────────────────────────────────────────────
+function LoadingDots() {
   return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(18px)",
-        transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms`,
-      }}
-    >
-      {children}
-    </div>
+    <>
+      <style>{`
+        @keyframes blink { 0%,80%,100%{opacity:0} 40%{opacity:1} }
+        .ld span { animation: blink 1.4s infinite both; }
+        .ld span:nth-child(2) { animation-delay: 0.2s; }
+        .ld span:nth-child(3) { animation-delay: 0.4s; }
+      `}</style>
+      <span className="ld" style={{ marginLeft: 2 }}>
+        <span>.</span><span>.</span><span>.</span>
+      </span>
+    </>
   );
 }
 
-// Lightbox component
+// ── Lightbox ──────────────────────────────────────────────────────────────────
 function Lightbox({
-  item,
-  onClose,
-  onPrev,
-  onNext,
-  hasPrev,
-  hasNext,
+  item, onClose, onPrev, onNext, hasPrev, hasNext,
 }: {
   item: GalleryItem;
   onClose: () => void;
@@ -87,113 +63,89 @@ function Lightbox({
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
-      if (e.key === "ArrowLeft" && hasPrev) onPrev();
+      if (e.key === "ArrowLeft"  && hasPrev) onPrev();
       if (e.key === "ArrowRight" && hasNext) onNext();
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [onClose, onPrev, onNext, hasPrev, hasNext]);
 
+  const btnBase: React.CSSProperties = {
+    position: "absolute",
+    background: "#faf6ee",
+    border: "none",
+    borderRadius: 2,
+    color: inkFade,
+    cursor: "pointer",
+    zIndex: 101,
+    fontFamily: "'Caveat', cursive",
+    fontSize: 22,
+    fontWeight: 700,
+    padding: "4px 12px",
+    boxShadow: "2px 3px 6px rgba(0,0,0,0.35)",
+    transition: "transform 0.15s ease, box-shadow 0.15s ease",
+  };
+
   return (
     <div
       onClick={onClose}
       style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 100,
-        background: "rgba(0,0,0,0.92)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        position: "fixed", inset: 0, zIndex: 100,
+        background: "rgba(30,12,4,0.94)",
+        display: "flex", alignItems: "center", justifyContent: "center",
         backdropFilter: "blur(6px)",
         animation: "fadeIn 0.2s ease",
       }}
     >
-      <style>{`
-        @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
-      `}</style>
+      <style>{`@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }`}</style>
 
-      {/* Close button */}
+      {/* Close */}
       <button
         onClick={onClose}
-        style={{
-          position: "absolute",
-          top: "1.5rem",
-          right: "1.5rem",
-          background: "none",
-          border: "none",
-          color: "#555",
-          fontSize: "1.25rem",
-          cursor: "pointer",
-          lineHeight: 1,
-          transition: "color 0.2s",
-          zIndex: 101,
-          fontFamily: "inherit",
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.color = "#aaa")}
-        onMouseLeave={(e) => (e.currentTarget.style.color = "#555")}
+        style={{ ...btnBase, top: "1.5rem", right: "1.5rem", fontSize: 18 }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.05)"; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
       >
         ✕
       </button>
 
-      {/* Prev */}
       {hasPrev && (
         <button
           onClick={(e) => { e.stopPropagation(); onPrev(); }}
-          style={{
-            position: "absolute",
-            left: "1.5rem",
-            background: "none",
-            border: "none",
-            color: "#555",
-            fontSize: "1.5rem",
-            cursor: "pointer",
-            transition: "color 0.2s",
-            zIndex: 101,
-            fontFamily: "inherit",
-            padding: "0.5rem",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#aaa")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#555")}
+          style={{ ...btnBase, left: "1.5rem", top: "50%", transform: "translateY(-50%)" }}
+          onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "3px 4px 10px rgba(0,0,0,0.45)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "2px 3px 6px rgba(0,0,0,0.35)"; }}
         >
           ←
         </button>
       )}
 
-      {/* Next */}
       {hasNext && (
         <button
           onClick={(e) => { e.stopPropagation(); onNext(); }}
-          style={{
-            position: "absolute",
-            right: "1.5rem",
-            background: "none",
-            border: "none",
-            color: "#555",
-            fontSize: "1.5rem",
-            cursor: "pointer",
-            transition: "color 0.2s",
-            zIndex: 101,
-            fontFamily: "inherit",
-            padding: "0.5rem",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#aaa")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#555")}
+          style={{ ...btnBase, right: "1.5rem", top: "50%", transform: "translateY(-50%)" }}
+          onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "3px 4px 10px rgba(0,0,0,0.45)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "2px 3px 6px rgba(0,0,0,0.35)"; }}
         >
           →
         </button>
       )}
 
-      {/* Image container */}
+      {/* Polaroid frame */}
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          maxWidth: "min(90vw, 960px)",
-          maxHeight: "85vh",
+          background: "#fff",
+          padding: "12px 12px 48px",
+          borderRadius: 2,
+          boxShadow: "4px 8px 24px rgba(0,0,0,0.5)",
+          maxWidth: "min(88vw, 900px)",
+          maxHeight: "88vh",
           display: "flex",
           flexDirection: "column",
-          gap: "0.75rem",
           alignItems: "center",
+          gap: 0,
+          transform: "rotate(-0.5deg)",
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -202,21 +154,21 @@ function Lightbox({
           alt={item.description}
           style={{
             maxWidth: "100%",
-            maxHeight: "78vh",
+            maxHeight: "72vh",
             objectFit: "contain",
-            borderRadius: "2px",
-            boxShadow: "0 0 0 1px rgba(255,255,255,0.06)",
             display: "block",
+            borderRadius: 1,
           }}
         />
-        <p
-          style={{
-            color: "#555",
-            fontSize: "0.7rem",
-            textAlign: "center",
-            fontFamily: "inherit",
-          }}
-        >
+        <p style={{
+          fontFamily: "'Kalam', cursive",
+          fontSize: 13, fontWeight: 300,
+          color: inkFade,
+          textAlign: "center",
+          marginTop: 12,
+          padding: "0 8px",
+          lineHeight: 1.4,
+        }}>
           {item.description}
         </p>
       </div>
@@ -224,10 +176,116 @@ function Lightbox({
   );
 }
 
-// Masonry column layout with infinite scroll
+// ── Gallery tile as a polaroid ────────────────────────────────────────────────
+function GalleryTile({
+  item, index, onSelect,
+}: {
+  item: GalleryItem;
+  index: number;
+  onSelect: (i: number) => void;
+}) {
+  const { ref, visible } = useFadeIn();
+  const [hovered, setHovered] = useState(false);
+
+  // Slight rotation per tile — deterministic from index
+  const rotations = [-2.1, 1.3, -0.8, 2.2, -1.5, 0.7, -1.9, 1.8, -0.5, 2.4, -1.2, 0.9];
+  const r = rotations[index % rotations.length];
+
+  const pinBgs = [
+    "radial-gradient(circle at 40% 35%, #e74c3c, #c0392b)",
+    "radial-gradient(circle at 40% 35%, #f9ca24, #f39c12)",
+    "radial-gradient(circle at 40% 35%, #5dade2, #2980b9)",
+    "radial-gradient(circle at 40% 35%, #58d68d, #27ae60)",
+    "radial-gradient(circle at 40% 35%, #bb8fce, #8e44ad)",
+  ];
+
+  return (
+    <div
+      ref={ref}
+      onClick={() => onSelect(index)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        position: "relative",
+        cursor: "pointer",
+        opacity: visible ? 1 : 0,
+        transform: visible
+          ? hovered ? "rotate(0deg) scale(1.04)" : `rotate(${r}deg)`
+          : `rotate(${r}deg) translateY(12px)`,
+        transition: `opacity 0.5s ease ${(index % 8) * 40}ms, transform 0.3s ease`,
+        zIndex: hovered ? 5 : 1,
+        transformOrigin: "center top",
+      }}
+    >
+      {/* Pin */}
+      <div style={{
+        position: "absolute", top: -10, left: "50%",
+        transform: "translateX(-50%)", zIndex: 5,
+        pointerEvents: "none",
+      }}>
+        <div style={{
+          width: 11, height: 11, borderRadius: "50%",
+          background: pinBgs[index % pinBgs.length],
+          boxShadow: "0 2px 3px rgba(0,0,0,0.4), inset 0 -1px 2px rgba(0,0,0,0.2), inset 0 1px 1px rgba(255,255,255,0.3)",
+          position: "relative",
+        }}>
+          <div style={{
+            position: "absolute", bottom: -4, left: "50%",
+            transform: "translateX(-50%)",
+            width: 2, height: 5, background: "#999",
+            borderRadius: "0 0 2px 2px",
+          }} />
+        </div>
+      </div>
+
+      {/* Polaroid */}
+      <div style={{
+        background: "#fff",
+        padding: "8px 8px 28px",
+        borderRadius: 1,
+        boxShadow: hovered
+          ? "4px 6px 16px rgba(0,0,0,0.32)"
+          : "2px 3px 8px rgba(0,0,0,0.25)",
+        transition: "box-shadow 0.3s ease",
+        overflow: "hidden",
+      }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`${BASE_URL}/${item["file-name"]}`}
+          alt={item.description}
+          loading="lazy"
+          style={{
+            width: "100%", height: "auto", display: "block",
+            borderRadius: 1,
+            transform: hovered ? "scale(1.02)" : "scale(1)",
+            transition: "transform 0.4s ease",
+          }}
+        />
+        {/* Caption strip */}
+        <p style={{
+          fontFamily: "'Kalam', cursive",
+          fontSize: 11, fontWeight: 300,
+          color: inkFade,
+          textAlign: "center",
+          marginTop: 6,
+          lineHeight: 1.3,
+          opacity: hovered ? 1 : 0.6,
+          transition: "opacity 0.2s ease",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          padding: "0 2px",
+        }}>
+          {item.description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ── Masonry grid ──────────────────────────────────────────────────────────────
 function MasonryGallery({
-  allItems,
-  onSelect,
+  allItems, onSelect,
 }: {
   allItems: GalleryItem[];
   onSelect: (index: number) => void;
@@ -252,17 +310,14 @@ function MasonryGallery({
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // Sentinel observer — fires when bottom of grid comes into view
   useEffect(() => {
     if (!hasMore) return;
     const sentinel = sentinelRef.current;
     if (!sentinel) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !loading) {
           setLoading(true);
-          // Small artificial delay so the spinner is visible
           setTimeout(() => {
             setVisibleCount((c) => Math.min(c + BATCH_SIZE, allItems.length));
             setLoading(false);
@@ -275,7 +330,6 @@ function MasonryGallery({
     return () => observer.disconnect();
   }, [hasMore, loading, allItems.length]);
 
-  // Distribute items into columns
   const cols: GalleryItem[][] = Array.from({ length: columns }, () => []);
   const colIndices: number[][] = Array.from({ length: columns }, () => []);
   items.forEach((item, i) => {
@@ -286,62 +340,45 @@ function MasonryGallery({
 
   return (
     <>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: `repeat(${columns}, 1fr)`,
-          gap: "3px",
-        }}
-      >
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: `repeat(${columns}, 1fr)`,
+        gap: 20,
+      }}>
         {cols.map((col, ci) => (
-          <div key={ci} style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
-            {col.map((item, ri) => {
-              const globalIndex = colIndices[ci][ri];
-              return (
-                <GalleryTile
-                  key={item["file-name"]}
-                  item={item}
-                  index={globalIndex}
-                  onSelect={onSelect}
-                />
-              );
-            })}
+          <div key={ci} style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            {col.map((item, ri) => (
+              <GalleryTile
+                key={item["file-name"]}
+                item={item}
+                index={colIndices[ci][ri]}
+                onSelect={onSelect}
+              />
+            ))}
           </div>
         ))}
       </div>
 
-      {/* Sentinel + loader */}
-      <div ref={sentinelRef} style={{ height: "1px" }} />
+      <div ref={sentinelRef} style={{ height: 1 }} />
+
       {loading && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            padding: "2.5rem 0",
-          }}
-        >
-          <span
-            style={{
-              fontSize: "0.65rem",
-              color: "#333",
-              letterSpacing: "0.08em",
-              fontFamily: "inherit",
-            }}
-          >
-            loading
-            <LoadingDots />
+        <div style={{ display: "flex", justifyContent: "center", padding: "2.5rem 0" }}>
+          <span style={{
+            fontFamily: "'Special Elite', cursive",
+            fontSize: 12, letterSpacing: 3,
+            color: "rgba(255,255,255,0.15)",
+          }}>
+            loading<LoadingDots />
           </span>
         </div>
       )}
+
       {!hasMore && items.length > 0 && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            padding: "2rem 0",
-          }}
-        >
-          <span style={{ fontSize: "0.6rem", color: "#2a2a2a", fontFamily: "inherit" }}>
+        <div style={{ display: "flex", justifyContent: "center", padding: "2rem 0" }}>
+          <span style={{
+            fontFamily: "'Caveat', cursive",
+            fontSize: 18, color: "rgba(255,255,255,0.1)",
+          }}>
             · · ·
           </span>
         </div>
@@ -350,98 +387,35 @@ function MasonryGallery({
   );
 }
 
-function LoadingDots() {
-  return (
-    <>
-      <style>{`
-        @keyframes blink { 0%,80%,100%{opacity:0} 40%{opacity:1} }
-        .ld span { animation: blink 1.4s infinite both; }
-        .ld span:nth-child(2) { animation-delay: 0.2s; }
-        .ld span:nth-child(3) { animation-delay: 0.4s; }
-      `}</style>
-      <span className="ld" style={{ marginLeft: "2px" }}>
-        <span>.</span><span>.</span><span>.</span>
-      </span>
-    </>
-  );
-}
-
-function GalleryTile({
-  item,
-  index,
-  onSelect,
-}: {
-  item: GalleryItem;
-  index: number;
-  onSelect: (i: number) => void;
-}) {
-  const { ref, visible } = useFadeIn();
+// ── Nav link ──────────────────────────────────────────────────────────────────
+function NavNote({ href, label }: { href: string; label: string }) {
   const [hovered, setHovered] = useState(false);
-
   return (
-    <div
-      ref={ref}
-      onClick={() => onSelect(index)}
+    <Link
+      href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        position: "relative",
-        cursor: "pointer",
-        overflow: "hidden",
-        opacity: visible ? 1 : 0,
-        transform: visible ? "scale(1)" : "scale(0.98)",
-        transition: `opacity 0.6s ease ${(index % 8) * 40}ms, transform 0.6s ease ${(index % 8) * 40}ms`,
-        background: "#111",
+        fontFamily: "'Caveat', cursive",
+        fontSize: 16,
+        color: hovered ? ink : inkFade,
+        textDecoration: "none",
+        borderBottom: `1px dashed ${hovered ? "rgba(44,24,16,0.5)" : "rgba(44,24,16,0.2)"}`,
+        paddingBottom: 1,
+        transition: "color 0.2s, border-color 0.2s",
       }}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={`${BASE_URL}/${item["file-name"]}`}
-        alt={item.description}
-        loading="lazy"
-        style={{
-          width: "100%",
-          height: "auto",
-          display: "block",
-          transform: hovered ? "scale(1.03)" : "scale(1)",
-          transition: "transform 0.5s ease",
-        }}
-      />
-
-      {/* Hover overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "rgba(0,0,0,0.5)",
-          opacity: hovered ? 1 : 0,
-          transition: "opacity 0.3s ease",
-          display: "flex",
-          alignItems: "flex-end",
-          padding: "0.75rem",
-        }}
-      >
-        <p
-          style={{
-            color: "#bbb",
-            fontSize: "0.65rem",
-            lineHeight: "1.4",
-            transform: hovered ? "translateY(0)" : "translateY(6px)",
-            transition: "transform 0.3s ease",
-          }}
-        >
-          {item.description}
-        </p>
-      </div>
-    </div>
+      {label}
+    </Link>
   );
 }
 
+// ── Page ──────────────────────────────────────────────────────────────────────
 const navLinks = [
-  { label: "home", href: "/" },
-  { label: "writings", href: "/blogs" },
-  { label: "pow", href: "/pow" },
-  { label: "my reads", href: "/reads" },
+  { label: "home",      href: "/" },
+  { label: "writings",  href: "/blogs" },
+  { label: "pow",       href: "/pow" },
+  { label: "my reads",  href: "/reads" },
   { label: "linkstash", href: "/linkstash" },
 ];
 
@@ -458,109 +432,121 @@ export default function GalleryPage() {
   }, [items.length]);
 
   return (
-    <div
-      className={`bg-[#0a0a0a] relative min-h-screen ${demFont.className}`}
-      style={{
-        backgroundImage:
-          "radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.015) 0%, transparent 60%)",
-      }}
-    >
-      {/* Grain overlay */}
-      <div
-        aria-hidden
-        style={{
-          position: "fixed",
-          inset: 0,
-          pointerEvents: "none",
-          zIndex: 0,
-          opacity: 0.035,
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "128px 128px",
-        }}
-      />
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Special+Elite&family=Kalam:wght@300;400;700&display=swap');
+      `}</style>
 
-      <div className="text-white relative z-10" style={{ padding: "6rem 0 6rem" }}>
-        {/* Header + nav: centered, narrow */}
-        <div
-          className="mx-auto"
-          style={{ width: "92%", maxWidth: "640px", marginBottom: "3rem" }}
-        >
-          {/* Nav */}
-          <FadeSection delay={0} className="mb-16">
-            <nav className="flex flex-wrap gap-x-5 gap-y-2">
-              {navLinks.map(({ label, href }) => (
-                <Link
-                  key={label}
-                  href={href}
-                  className="text-xs"
-                  style={{
-                    color: "#555",
-                    textDecoration: "none",
-                    borderBottom: "1px solid #2a2a2a",
-                    paddingBottom: "1px",
-                    transition: "color 0.2s, border-color 0.2s",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#aaa";
-                    e.currentTarget.style.borderColor = "#666";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#555";
-                    e.currentTarget.style.borderColor = "#2a2a2a";
-                  }}
-                >
-                  {label}
-                </Link>
-              ))}
-            </nav>
-          </FadeSection>
+      {/* Wood frame */}
+      <div style={{
+        background: "#3d1f0a",
+        minHeight: "100vh",
+        padding: 24,
+        boxShadow: "inset 0 0 80px rgba(0,0,0,0.6)",
+      }}>
+        {/* Cork surface */}
+        <div style={{
+          backgroundImage: [
+            "repeating-linear-gradient(0deg,  transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px)",
+            "repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px)",
+            "radial-gradient(ellipse at 25% 35%, #c8956c 0%, #a0714a 45%, #b4825a 70%, #966941 100%)",
+          ].join(", "),
+          borderRadius: 4,
+          padding: "32px 28px 48px",
+          minHeight: "calc(100vh - 48px)",
+          position: "relative",
+          boxShadow: "inset 0 2px 8px rgba(0,0,0,0.3), inset 0 -2px 8px rgba(0,0,0,0.2)",
+        }}>
+          {/* Cork grain */}
+          <div aria-hidden style={{
+            position: "absolute", inset: 0, borderRadius: 4,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.25'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E")`,
+            backgroundRepeat: "repeat", backgroundSize: "128px 128px",
+            opacity: 0.45, pointerEvents: "none", zIndex: 0,
+          }} />
 
-          {/* Title */}
-          <FadeSection delay={0}>
-            <h1
-              className="text-2xl tracking-tight"
-              style={{ letterSpacing: "-0.01em" }}
-            >
-              Gallery
-            </h1>
-            <p className="text-xs mt-1" style={{ color: "#444" }}>
-              {items.length} photos · moments collected
+          <div style={{ position: "relative", zIndex: 1 }}>
+
+            {/* Board label */}
+            <p style={{
+              fontFamily: "'Special Elite', cursive",
+              color: "rgba(255,255,255,0.13)",
+              fontSize: 11, letterSpacing: 5,
+              textTransform: "uppercase",
+              textAlign: "center",
+              marginBottom: 32,
+            }}>
+              · · · gallery · · ·
             </p>
-            <div
-              className="mt-6"
-              style={{
-                height: "1px",
-                background:
-                  "linear-gradient(to right, rgba(255,255,255,0.08), transparent)",
-              }}
-            />
-          </FadeSection>
-        </div>
 
-        {/* Full-width masonry grid */}
-        <div style={{ width: "92%", margin: "0 auto" }}>
-          <MasonryGallery allItems={items} onSelect={setLightboxIndex} />
-        </div>
+            {/* Header note */}
+            <div style={{
+              background: "#fefbd8",
+              borderRadius: 2,
+              padding: "22px 24px 18px",
+              boxShadow: "2px 3px 8px rgba(0,0,0,0.22)",
+              marginBottom: 36,
+              position: "relative",
+              transform: "rotate(-0.6deg)",
+              maxWidth: 600,
+              margin: "0 auto 36px",
+            }}>
+              {/* Tape */}
+              <div style={{
+                position: "absolute", top: -8, left: "15%", width: "70%", height: 18,
+                background: "rgba(220,200,160,0.68)",
+                border: "0.5px solid rgba(180,160,120,0.35)",
+                zIndex: 4,
+              }} />
 
-        {/* Footer */}
-        <div
-          className="mx-auto mt-24"
-          style={{ width: "92%", maxWidth: "640px" }}
-        >
-          <FadeSection delay={60}>
-            <div
-              style={{
-                height: "1px",
-                background:
-                  "linear-gradient(to right, rgba(255,255,255,0.05), transparent)",
-                marginBottom: "1.5rem",
-              }}
-            />
-            <p className="text-xs" style={{ color: "#333" }}>
+              {/* Nav */}
+              <nav style={{
+                display: "flex", flexWrap: "wrap", gap: "6px 20px",
+                marginBottom: 16,
+              }}>
+                {navLinks.map(({ label, href }) => (
+                  <NavNote key={label} href={href} label={label} />
+                ))}
+              </nav>
+
+              {/* Divider */}
+              <div style={{
+                height: 1,
+                background: "repeating-linear-gradient(90deg, rgba(44,24,16,0.12) 0, rgba(44,24,16,0.12) 4px, transparent 4px, transparent 8px)",
+                margin: "12px 0",
+              }} />
+
+              <h1 style={{
+                fontFamily: "'Caveat', cursive",
+                fontSize: 32, fontWeight: 700,
+                color: ink, lineHeight: 1.1, marginBottom: 4,
+              }}>
+                Gallery
+              </h1>
+              <p style={{
+                fontFamily: "'Special Elite', cursive",
+                fontSize: 11, letterSpacing: 2,
+                color: "rgba(90,62,43,0.5)",
+              }}>
+                {items.length} photos · moments collected
+              </p>
+            </div>
+
+            {/* Masonry grid — full width with padding */}
+            <div style={{ padding: "8px 0 0" }}>
+              <MasonryGallery allItems={items} onSelect={setLightboxIndex} />
+            </div>
+
+            {/* Footer */}
+            <p style={{
+              fontFamily: "'Caveat', cursive",
+              fontSize: 14, color: "rgba(255,255,255,0.11)",
+              letterSpacing: 1, textAlign: "right",
+              marginTop: 40, paddingRight: 4,
+            }}>
               abhijith m s · bengaluru
             </p>
-          </FadeSection>
+          </div>
         </div>
       </div>
 
@@ -575,6 +561,6 @@ export default function GalleryPage() {
           hasNext={lightboxIndex < items.length - 1}
         />
       )}
-    </div>
+    </>
   );
 }
