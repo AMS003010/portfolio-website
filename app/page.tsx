@@ -87,6 +87,7 @@ interface NoteProps {
   lined?: boolean;
   wide?: boolean;
   className?: string;
+  tooLong?: boolean;
 }
 
 const noteBg: Record<string, string> = {
@@ -98,7 +99,7 @@ const noteBg: Record<string, string> = {
   dark:   "#1a2744",
 };
 
-function Note({ children, rotate = 0, delay = 0, color = "cream", lined = false, wide = false }: NoteProps) {
+function Note({ children, rotate = 0, delay = 0, color = "cream", lined = false, wide = false, tooLong = false }: NoteProps) {
   const { ref, visible } = useFadeIn();
   const [hovered, setHovered] = useState(false);
   const bg = noteBg[color];
@@ -124,6 +125,7 @@ function Note({ children, rotate = 0, delay = 0, color = "cream", lined = false,
         zIndex: hovered ? 10 : 1,
         transformOrigin: "center center",
       }}
+      className={`${tooLong ? 'w-[80%] md:w-auto' : ''}`}
     >
       <div style={{
         background: bg,
@@ -270,13 +272,14 @@ function Anchor({ href, children }: { href: string; children: React.ReactNode })
 
 // ── Polaroid photo note ───────────────────────────────────────────────────────
 function Polaroid({
-  src, alt, caption, rotate, delay,
+  src, alt, caption, rotate, delay, wide = false
 }: {
   src: Parameters<typeof Image>[0]["src"];
   alt: string;
   caption: React.ReactNode;
   rotate: number;
   delay: number;
+  wide?: boolean;
 }) {
   const { ref, visible } = useFadeIn();
   const [hovered, setHovered] = useState(false);
@@ -287,6 +290,7 @@ function Polaroid({
       onMouseLeave={() => setHovered(false)}
       style={{
         position: "relative",
+        gridColumn: wide ? "span 2" : undefined,
         opacity: visible ? 1 : 0,
         transform: visible
           ? hovered ? "rotate(0deg) scale(1.04)" : `rotate(${rotate}deg)`
@@ -338,6 +342,15 @@ const navLinks = [
 ];
 
 export default function Home() {
+  const [isNarrow, setIsNarrow] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsNarrow(window.innerWidth <= 426);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   return (
     <>
       {/* ── Google Fonts ── inject in layout.tsx instead if preferred */}
@@ -390,31 +403,50 @@ export default function Home() {
           </p>
 
           {/* ── Masonry-style grid ── */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
-            gap: 28,
-            position: "relative", zIndex: 1,
-            alignItems: "start",
-          }}>
+          <div
+            className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-7 relative z-1 items-start"
+          >
 
             {/* 1 · Identity */}
-            <Note rotate={-1.5} delay={50} color="cream" lined>
-              <Pin color="red" />
-              <NoteLabel>who am i</NoteLabel>
-              <NoteTitle>Abhijith M S</NoteTitle>
-              <NoteBody>Software Engineer · Bengaluru, India</NoteBody>
-              <NoteBody style={{ marginTop: 6, fontSize: 13 }}>
-                Currently interning at{" "}
-                <strong style={{ color: ink, fontWeight: 700 }}>Nokia</strong>
-              </NoteBody>
-              <div style={{ marginTop: 14, display: "flex", flexWrap: "wrap" }}>
-                <Chip>web</Chip>
-                <Chip>databases</Chip>
-                <Chip>systems</Chip>
-                <Chip>benchmarking</Chip>
-              </div>
-            </Note>
+            {
+              isNarrow ? (
+                <Note rotate={-1.5} delay={50} color="cream" wide>
+                  <Pin color="red" />
+                  <NoteLabel>who am i</NoteLabel>
+                  <NoteTitle>Abhijith M S</NoteTitle>
+                  <NoteBody>Software Engineer · Bengaluru, India</NoteBody>
+                  <NoteBody style={{ marginTop: 6, fontSize: 13 }}>
+                    Currently interning at{" "}
+                    <strong style={{ color: ink, fontWeight: 700 }}>Nokia</strong>
+                  </NoteBody>
+                  <div style={{ marginTop: 14, display: "flex", flexWrap: "wrap" }}>
+                    <Chip>web</Chip>
+                    <Chip>databases</Chip>
+                    <Chip>systems</Chip>
+                    <Chip>benchmarking</Chip>
+                    <Chip>astrophile</Chip>
+                  </div>
+                </Note>
+              ) : (
+                <Note rotate={-1.5} delay={50} color="cream" lined>
+                  <Pin color="red" />
+                  <NoteLabel>who am i</NoteLabel>
+                  <NoteTitle>Abhijith M S</NoteTitle>
+                  <NoteBody>Software Engineer · Bengaluru, India</NoteBody>
+                  <NoteBody style={{ marginTop: 6, fontSize: 13 }}>
+                    Currently interning at{" "}
+                    <strong style={{ color: ink, fontWeight: 700 }}>Nokia</strong>
+                  </NoteBody>
+                  <div style={{ marginTop: 14, display: "flex", flexWrap: "wrap" }}>
+                    <Chip>web</Chip>
+                    <Chip>databases</Chip>
+                    <Chip>systems</Chip>
+                    <Chip>benchmarking</Chip>
+                    <Chip>astrophile</Chip>
+                  </div>
+                </Note>
+              )
+            }
 
             {/* 2 · About (wide) */}
             <Note rotate={1.2} delay={110} color="yellow" wide>
@@ -434,29 +466,61 @@ export default function Home() {
             </Note>
 
             {/* 3 · Nav links */}
-            <Note rotate={2} delay={170} color="pink">
-              <Pin color="yellow" />
-              <NoteLabel>pages</NoteLabel>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 6 }}>
-                {navLinks.map(({ label, href }) => (
-                  <NavItem key={label} href={href} label={label} />
-                ))}
-              </div>
-            </Note>
+            {
+              isNarrow ? (
+                <Note rotate={2} delay={170} color="pink" wide>
+                  <Pin color="yellow" />
+                  <NoteLabel>pages</NoteLabel>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 6 }}>
+                    {navLinks.map(({ label, href }) => (
+                      <NavItem key={label} href={href} label={label} />
+                    ))}
+                  </div>
+                </Note>
+              ) : (
+                <Note rotate={2} delay={170} color="pink">
+                  <Pin color="yellow" />
+                  <NoteLabel>pages</NoteLabel>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 6 }}>
+                    {navLinks.map(({ label, href }) => (
+                      <NavItem key={label} href={href} label={label} />
+                    ))}
+                  </div>
+                </Note>
+              )
+            }
 
             {/* 4 · Cosmic image polaroid */}
-            <Polaroid
-              src={Img1}
-              alt="A cosmic deploy erupts — chaos compiles into light"
-              caption={
-                <>
-                  &quot;A cosmic deploy erupts, where chaos compiles into light&quot;{" "}
-                  <Anchor href="https://in.pinterest.com/pin/422281212070842/">[src]</Anchor>
-                </>
-              }
-              rotate={-2}
-              delay={230}
-            />
+            {
+              isNarrow ? (
+                <Polaroid
+                  src={Img1}
+                  alt="A cosmic deploy erupts, where chaos compiles into light and the universe pushes a blazing commit to existence"
+                  caption={
+                    <>
+                      &quot;A cosmic deploy erupts, where chaos compiles into light and the universe pushes a blazing commit to existence&quot;{" "}
+                      <Anchor href="https://in.pinterest.com/pin/422281212070842/">[src]</Anchor>
+                    </>
+                  }
+                  rotate={-2}
+                  delay={230}
+                  wide
+                />
+              ) : (
+                <Polaroid
+                  src={Img1}
+                  alt="A cosmic deploy erupts, where chaos compiles into light and the universe pushes a blazing commit to existence"
+                  caption={
+                    <>
+                      &quot;A cosmic deploy erupts, where chaos compiles into light and the universe pushes a blazing commit to existence&quot;{" "}
+                      <Anchor href="https://in.pinterest.com/pin/422281212070842/">[src]</Anchor>
+                    </>
+                  }
+                  rotate={-2}
+                  delay={230}
+                />
+              )
+            }
 
             {/* 5 · HomeLab dark note */}
             <Note rotate={-0.8} delay={290} color="dark">
@@ -476,42 +540,87 @@ export default function Home() {
             </Note>
 
             {/* 6 · Spec list */}
-            <Note rotate={1.8} delay={350} color="cream">
-              <Tape variant="washi" />
-              <NoteLabel>components — right now</NoteLabel>
-              <div style={{ marginTop: 8 }}>
-                {[
-                  "Raspberry Pi 4 (2 GB)",
-                  "Raspberry Pi 5 (16 GB)",
-                  "TP-Link Archer C7 Router",
-                  "TP-Link TL-SG105E Switch",
-                  "Cat 6 Ethernet cables",
-                  "2 × 128 GB micro SD cards",
-                ].map((item) => <SpecRow key={item}>{item}</SpecRow>)}
-                <div style={{
-                  padding: "4px 0", fontSize: 12,
-                  fontFamily: "'Kalam', cursive",
-                  color: "rgba(44,24,16,0.3)", fontStyle: "italic",
-                }}>
-                  SSDs coming…
-                </div>
-              </div>
-            </Note>
+            {
+              isNarrow ? (
+                <Note rotate={1.8} delay={350} color="cream" wide>
+                  <Tape variant="washi" />
+                  <NoteLabel>components — right now</NoteLabel>
+                  <div style={{ marginTop: 8 }}>
+                    {[
+                      "Raspberry Pi 4 (2 GB)",
+                      "Raspberry Pi 5 (16 GB)",
+                      "TP-Link Archer C7 Router",
+                      "TP-Link TL-SG105E Switch",
+                      "Cat 6 Ethernet cables",
+                      "2 × 128 GB micro SD cards",
+                    ].map((item) => <SpecRow key={item}>{item}</SpecRow>)}
+                    <div style={{
+                      padding: "4px 0", fontSize: 12,
+                      fontFamily: "'Kalam', cursive",
+                      color: "rgba(44,24,16,0.3)", fontStyle: "italic",
+                    }}>
+                      SSDs coming…
+                    </div>
+                  </div>
+                </Note>
+              ) : (
+                <Note rotate={1.8} delay={350} color="cream">
+                  <Tape variant="washi" />
+                  <NoteLabel>components — right now</NoteLabel>
+                  <div style={{ marginTop: 8 }}>
+                    {[
+                      "Raspberry Pi 4 (2 GB)",
+                      "Raspberry Pi 5 (16 GB)",
+                      "TP-Link Archer C7 Router",
+                      "TP-Link TL-SG105E Switch",
+                      "Cat 6 Ethernet cables",
+                      "2 × 128 GB micro SD cards",
+                    ].map((item) => <SpecRow key={item}>{item}</SpecRow>)}
+                    <div style={{
+                      padding: "4px 0", fontSize: 12,
+                      fontFamily: "'Kalam', cursive",
+                      color: "rgba(44,24,16,0.3)", fontStyle: "italic",
+                    }}>
+                      SSDs coming…
+                    </div>
+                  </div>
+                </Note>
+              )
+            }
 
             {/* 7 · Raspberry Pi polaroid */}
-            <Polaroid
-              src={Img2}
-              alt="Raspberry Pi cluster"
-              caption={
-                <>
-                  Yup, it&apos;s a{" "}
-                  <Anchor href="https://en.wikipedia.org/wiki/Raspberry_Pi">Raspberry Pi</Anchor>{" "}
-                  cluster.
-                </>
-              }
-              rotate={1.5}
-              delay={410}
-            />
+            {
+              isNarrow ? (
+                <Polaroid
+                  src={Img2}
+                  alt="Raspberry Pi cluster"
+                  caption={
+                    <>
+                      Yup, it&apos;s a{" "}
+                      <Anchor href="https://en.wikipedia.org/wiki/Raspberry_Pi">Raspberry Pi</Anchor>{" "}
+                      cluster.
+                    </>
+                  }
+                  rotate={1.5}
+                  delay={410}
+                  wide
+                />
+              ) : (
+                <Polaroid
+                  src={Img2}
+                  alt="Raspberry Pi cluster"
+                  caption={
+                    <>
+                      Yup, it&apos;s a{" "}
+                      <Anchor href="https://en.wikipedia.org/wiki/Raspberry_Pi">Raspberry Pi</Anchor>{" "}
+                      cluster.
+                    </>
+                  }
+                  rotate={1.5}
+                  delay={410}
+                />
+              )
+            }
 
             {/* 8 · Fun fact / homelab details */}
             <Note rotate={-1} delay={470} color="green">
@@ -532,58 +641,124 @@ export default function Home() {
             </Note>
 
             {/* 9 · Expense Tracker */}
-            <Note rotate={0.5} delay={530} color="yellow">
-              <Pin color="green" />
-              <NoteLabel>projects brought into existence</NoteLabel>
-              <NoteTitle>Expense Tracker</NoteTitle>
-              <NoteBody>
-                UPI statement parsing → dataframe →{" "}
-                <strong style={{ color: ink }}>phi-3 LLM</strong> tagging → Flask dashboard.
-              </NoteBody>
-              <NoteBody style={{ marginTop: 8, fontSize: 13 }}>
-                Uses <strong style={{ color: ink }}>categories.json</strong> +{" "}
-                <strong style={{ color: ink }}>preferences.json</strong> rules, then an LLM handles
-                the rest. Thinking about open-sourcing it 😺
-              </NoteBody>
-            </Note>
+            {
+              isNarrow ? (
+                <Note rotate={0.5} delay={530} color="yellow" wide>
+                  <Pin color="green" />
+                  <NoteLabel>projects brought into existence</NoteLabel>
+                  <NoteTitle>Expense Tracker</NoteTitle>
+                  <NoteBody>
+                    UPI statement parsing → dataframe →{" "}
+                    <strong style={{ color: ink }}>phi-3 LLM</strong> tagging → Flask dashboard.
+                  </NoteBody>
+                  <NoteBody style={{ marginTop: 8, fontSize: 13 }}>
+                    Uses <strong style={{ color: ink }}>categories.json</strong> +{" "}
+                    <strong style={{ color: ink }}>preferences.json</strong> rules, then an LLM handles
+                    the rest. Thinking about open-sourcing it 😺
+                  </NoteBody>
+                </Note>
+              ) : (
+                <Note rotate={0.5} delay={530} color="yellow">
+                  <Pin color="green" />
+                  <NoteLabel>projects brought into existence</NoteLabel>
+                  <NoteTitle>Expense Tracker</NoteTitle>
+                  <NoteBody>
+                    UPI statement parsing → dataframe →{" "}
+                    <strong style={{ color: ink }}>phi-3 LLM</strong> tagging → Flask dashboard.
+                  </NoteBody>
+                  <NoteBody style={{ marginTop: 8, fontSize: 13 }}>
+                    Uses <strong style={{ color: ink }}>categories.json</strong> +{" "}
+                    <strong style={{ color: ink }}>preferences.json</strong> rules, then an LLM handles
+                    the rest. Thinking about open-sourcing it 😺
+                  </NoteBody>
+                </Note>
+              )
+            }
 
             {/* 10 · Hyphora */}
-            <Note rotate={-2.5} delay={590} color="blue">
-              <Pin color="white" />
-              <NoteLabel>fancied project #1</NoteLabel>
-              <NoteTitle>Hyphora</NoteTitle>
-              <NoteBody>
-                A <strong style={{ color: ink }}>bitcask-based</strong> key-value store built to
-                solve config sync across homelab nodes.
-              </NoteBody>
-            </Note>
+            {
+              isNarrow ? (
+                <Note rotate={-2.5} delay={590} color="blue" wide>
+                  <Pin color="white" />
+                  <NoteLabel>fancied project #1</NoteLabel>
+                  <NoteTitle>Hyphora</NoteTitle>
+                  <NoteBody>
+                    A <strong style={{ color: ink }}>bitcask-based</strong> key-value store built to
+                    solve config sync across homelab nodes.
+                  </NoteBody>
+                </Note>
+              ) : (
+                <Note rotate={-2.5} delay={590} color="blue">
+                  <Pin color="white" />
+                  <NoteLabel>fancied project #1</NoteLabel>
+                  <NoteTitle>Hyphora</NoteTitle>
+                  <NoteBody>
+                    A <strong style={{ color: ink }}>bitcask-based</strong> key-value store built to
+                    solve config sync across homelab nodes.
+                  </NoteBody>
+                </Note>
+              )
+            }
 
             {/* 11 · Chimera */}
-            <Note rotate={1.5} delay={650} color="cream">
-              <Pin color="red" />
-              <NoteLabel>fancied project #2</NoteLabel>
-              <NoteTitle>Chimera</NoteTitle>
-              <NoteBody>
-                A <strong style={{ color: ink }}>multi-protocol mock server</strong> to speed up
-                frontend dev without a working backend.
-              </NoteBody>
-              <NoteBody style={{ marginTop: 8, fontSize: 12 }}>
-                Supports HTTP + WebSocket — more protocols incoming.
-              </NoteBody>
-            </Note>
+            {
+              isNarrow ? (
+                <Note rotate={1.5} delay={650} color="cream" wide>
+                  <Pin color="red" />
+                  <NoteLabel>fancied project #2</NoteLabel>
+                  <NoteTitle>Chimera</NoteTitle>
+                  <NoteBody>
+                    A <strong style={{ color: ink }}>multi-protocol mock server</strong> to speed up
+                    frontend dev without a working backend.
+                  </NoteBody>
+                  <NoteBody style={{ marginTop: 8, fontSize: 12 }}>
+                    Supports HTTP + WebSocket — more protocols incoming.
+                  </NoteBody>
+                </Note>
+              ) : (
+                <Note rotate={1.5} delay={650} color="cream">
+                  <Pin color="red" />
+                  <NoteLabel>fancied project #2</NoteLabel>
+                  <NoteTitle>Chimera</NoteTitle>
+                  <NoteBody>
+                    A <strong style={{ color: ink }}>multi-protocol mock server</strong> to speed up
+                    frontend dev without a working backend.
+                  </NoteBody>
+                  <NoteBody style={{ marginTop: 8, fontSize: 12 }}>
+                    Supports HTTP + WebSocket — more protocols incoming.
+                  </NoteBody>
+                </Note>
+              )
+            }
 
             {/* 12 · Potterhead */}
-            <Note rotate={3} delay={710} color="pink">
-              <Tape variant="top" />
-              <NoteLabel>also</NoteLabel>
-              <NoteBody style={{ fontSize: 16 }}>
-                Proudly repping my{" "}
-                <strong style={{ color: ink }}>Potterhead</strong> side ⚡
-              </NoteBody>
-              <NoteBody style={{ fontSize: 13, marginTop: 6 }}>
-                Curating inspiration on Pinterest. Tinkering with Raspberry Pi homelabs.
-              </NoteBody>
-            </Note>
+            {
+              isNarrow ? (
+                <Note rotate={3} delay={710} color="pink" wide>
+                  <Tape variant="top" />
+                  <NoteLabel>also</NoteLabel>
+                  <NoteBody style={{ fontSize: 16 }}>
+                    Proudly repping my{" "}
+                    <strong style={{ color: ink }}>Potterhead</strong> side ⚡
+                  </NoteBody>
+                  <NoteBody style={{ fontSize: 13, marginTop: 6 }}>
+                    Curating inspiration on Pinterest. Tinkering with Raspberry Pi homelabs.
+                  </NoteBody>
+                </Note>
+              ) : (
+                <Note rotate={3} delay={710} color="pink">
+                  <Tape variant="top" />
+                  <NoteLabel>also</NoteLabel>
+                  <NoteBody style={{ fontSize: 16 }}>
+                    Proudly repping my{" "}
+                    <strong style={{ color: ink }}>Potterhead</strong> side ⚡
+                  </NoteBody>
+                  <NoteBody style={{ fontSize: 13, marginTop: 6 }}>
+                    Curating inspiration on Pinterest. Tinkering with Raspberry Pi homelabs.
+                  </NoteBody>
+                </Note>
+              )
+            }
 
           </div>
 

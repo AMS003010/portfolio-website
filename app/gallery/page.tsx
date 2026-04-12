@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import galleryData from "@/assets/gallery.json";
@@ -388,7 +387,7 @@ function MasonryGallery({
 }
 
 // ── Nav link ──────────────────────────────────────────────────────────────────
-function NavNote({ href, label }: { href: string; label: string }) {
+export function NavNote({ href, label }: { href: string; label: string }) {
   const [hovered, setHovered] = useState(false);
   return (
     <Link

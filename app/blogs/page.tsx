@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getAllBlogs } from "@/lib/blogs";
-import { HoverLink } from "@/components/HoverLink";
+import { NavNote } from "../gallery/page";
 
 export const metadata = {
   title: "Blogs — Abhijith M S",
@@ -8,6 +8,13 @@ export const metadata = {
 
 const ink     = "#2c1810";
 const inkFade = "#5a3e2b";
+const navLinks = [
+  { label: "home",      href: "/" },
+  { label: "gallery",  href: "/gallery" },
+  { label: "pow",       href: "/pow" },
+  { label: "my reads",  href: "/reads" },
+  { label: "linkstash", href: "/linkstash" },
+];
 
 export default function BlogsPage() {
   const blogs = getAllBlogs();
@@ -92,6 +99,7 @@ export default function BlogsPage() {
           }} />
 
           <div style={{ position: "relative", zIndex: 1, maxWidth: 680, margin: "0 auto" }}>
+            {/* Board label */}
             <p style={{
               fontFamily: "'Special Elite', cursive",
               color: "rgba(255,255,255,0.13)",
@@ -107,21 +115,39 @@ export default function BlogsPage() {
             <div style={{
               background: "#fefbd8",
               borderRadius: 2,
-              padding: "22px 22px 18px",
+              padding: "22px 24px 18px",
               boxShadow: "2px 3px 8px rgba(0,0,0,0.22)",
               marginBottom: 36,
               position: "relative",
-              transform: "rotate(-0.8deg)",
+              transform: "rotate(-0.6deg)",
+              maxWidth: 600,
+              margin: "0 auto 36px",
             }}>
+              {/* Tape */}
               <div style={{
                 position: "absolute", top: -8, left: "15%", width: "70%", height: 18,
                 background: "rgba(220,200,160,0.68)",
                 border: "0.5px solid rgba(180,160,120,0.35)",
                 zIndex: 4,
               }} />
-              <div style={{ marginBottom: 12 }}>
-                <HoverLink href="/">← back</HoverLink>
-              </div>
+
+              {/* Nav */}
+              <nav style={{
+                display: "flex", flexWrap: "wrap", gap: "6px 20px",
+                marginBottom: 16,
+              }}>
+                {navLinks.map(({ label, href }) => (
+                  <NavNote key={label} href={href} label={label} />
+                ))}
+              </nav>
+
+              {/* Divider */}
+              <div style={{
+                height: 1,
+                background: "repeating-linear-gradient(90deg, rgba(44,24,16,0.12) 0, rgba(44,24,16,0.12) 4px, transparent 4px, transparent 8px)",
+                margin: "12px 0",
+              }} />
+
               <h1 style={{
                 fontFamily: "'Caveat', cursive",
                 fontSize: 32, fontWeight: 700,
@@ -130,8 +156,9 @@ export default function BlogsPage() {
                 Writings
               </h1>
               <p style={{
-                fontFamily: "'Kalam', cursive",
-                fontSize: 14, fontWeight: 300, color: inkFade,
+                fontFamily: "'Special Elite', cursive",
+                fontSize: 11, letterSpacing: 2,
+                color: "rgba(90,62,43,0.5)",
               }}>
                 things I found cool writing about
               </p>
