@@ -120,21 +120,6 @@ export default async function BlogPage({
         }
         .prose-cork ul { margin: 0.75rem 0; padding: 0; list-style: none; }
         .prose-cork ol { margin: 0.75rem 0; padding-left: 1.25rem; color: ${inkFade}; font-size: 14px; line-height: 1.85; }
-        .prose-cork li {
-          color: ${inkFade};
-          font-size: 14px;
-          line-height: 1.85;
-          display: flex;
-          gap: 0.75rem;
-          align-items: flex-start;
-          margin-bottom: 0.4rem;
-          font-weight: 300;
-        }
-        .prose-cork li::before {
-          content: '—';
-          color: rgba(44,24,16,0.3);
-          flex-shrink: 0;
-        }
         .prose-cork hr {
           border: none;
           height: 1px;
@@ -280,7 +265,22 @@ export default async function BlogPage({
                     blockquote: ({ children }) => <blockquote>{children}</blockquote>,
                     ul: ({ children }) => <ul>{children}</ul>,
                     ol: ({ children }) => <ol>{children}</ol>,
-                    li: ({ children }) => <li>{children}</li>,
+                    li: ({ children }) => (
+                      <li
+                        style={{
+                          color: "#7a7a7a",
+                          fontSize: "0.875rem",
+                          lineHeight: "1.85",
+                          display: "flex",
+                          gap: "0.75rem",
+                          alignItems: "flex-start",
+                          marginBottom: "0.4rem",
+                        }}
+                      >
+                        <span style={{ color: "#333", flexShrink: 0 }}>-</span>
+                        <span>{children}</span>
+                      </li>
+                    ),
                     hr: () => <hr />,
                     img: ({ src, alt }) => (
                       <span style={{ display: "block", margin: "1.5rem 0" }}>
