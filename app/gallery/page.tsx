@@ -300,7 +300,7 @@ function MasonryGallery({
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
-      if (w < 640) setColumns(2);
+      if (w < 640) setColumns(1);
       else if (w < 1024) setColumns(3);
       else setColumns(4);
     };
