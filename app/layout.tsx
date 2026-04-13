@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://yourdomain.com", // ← Change this to your actual domain
+    url: "https://abhijithms.vercel.app", // ← Change this to your actual domain
     siteName: "Abhijith M S",
     title: "Abhijith M S | Software Engineer & Homelab Enthusiast",
     description:
