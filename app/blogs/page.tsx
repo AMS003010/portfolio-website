@@ -1,10 +1,7 @@
 import Link from "next/link";
+import { Metadata } from "next";
 import { getAllBlogs } from "@/lib/blogs";
 import { NavNote } from "../gallery/page";
-
-export const metadata = {
-  title: "Blogs — Abhijith M S",
-};
 
 const ink     = "#2c1810";
 const inkFade = "#5a3e2b";
@@ -15,6 +12,32 @@ const navLinks = [
   { label: "my reads",  href: "/reads" },
   { label: "linkstash", href: "/linkstash" },
 ];
+
+export const metadata: Metadata = {
+  title: "Writings",
+  description: "Things I found cool enough to write about — essays, thoughts, and technical deep dives.",
+  
+  openGraph: {
+    title: "Writings | Abhijith M S",
+    description: "Collection of blog posts and writings by Abhijith M S",
+    images: [
+      {
+        url: "/banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Abhijith M S - Writings",
+      },
+    ],
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Writings | Abhijith M S",
+    description: "Things I found cool enough to write about",
+    images: ["/banner.jpg"],
+  },
+};
 
 export default function BlogsPage() {
   const blogs = getAllBlogs();

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getBlogBySlug, getAllBlogs } from "@/lib/blogs";
@@ -16,7 +17,40 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const blog = getBlogBySlug(slug);
-  return { title: blog ? `${blog.title} — Abhijith M S` : "Not found" };
+
+  if (!blog) {
+    return {
+      title: "Blog Not Found — Abhijith M S",
+    };
+  }
+
+  return {
+    title: `${blog.title}`,
+    description: `"${blog.title}" by Abhijith M S`,
+
+    openGraph: {
+      title: `${blog.title} | Abhijith M S`,
+      description: `"${blog.title}" by Abhijith M S`,
+      images: [
+        {
+          url: "/banner.jpg",
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
+      type: "article",
+      publishedTime: blog.date,
+      authors: ["Abhijith M S"],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: `${blog.title} | Abhijith M S`,
+      description: `"${blog.title}" by Abhijith M S`,
+      images: ["/banner.jpg"],
+    },
+  };
 }
 
 const ink     = "#2c1810";
