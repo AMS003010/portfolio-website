@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | Abhijith M S",
   },
   description:
-    "Software Engineer based in Bengaluru, India. Passionate about systems, databases, homelabs, and learning in public. Currently interning at Nokia.",
+    "Software Engineer from Bengaluru building homelabs and aspiring Astrophile",
   keywords: [
     "Abhijith M S",
     "Software Engineer",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "Abhijith M S",
     title: "Abhijith M S | Software Engineer & Homelab Enthusiast",
     description:
-      "Software Engineer from Bengaluru building homelabs, side projects, and sharing what I learn. Currently interning at Nokia.",
+      "Software Engineer from Bengaluru building homelabs and aspiring Astrophile",
     images: [
       {
         url: "/banner.jpg",
@@ -55,14 +55,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Abhijith M S | Software Engineer",
     description:
-      "Software Engineer in Bengaluru • Homelab tinkerer • Learning in public",
+      "Software Engineer from Bengaluru building homelabs and aspiring Astrophile",
     images: ["/banner.jpg"],
     creator: "@ams_132_", // Your X handle
   },
 
   icons: {
     icon: "/favicon.ico",
-    // You can add more: apple, shortcut, etc.
   },
 };
 
