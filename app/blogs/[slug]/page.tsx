@@ -138,25 +138,29 @@ export default async function BlogPage({
       `}</style>
 
       {/* Wood frame */}
-      <div style={{
-        background: "#3d1f0a",
-        minHeight: "100vh",
-        padding: 24,
-        boxShadow: "inset 0 0 80px rgba(0,0,0,0.6)",
-      }}>
+      <div 
+        style={{
+          background: "#3d1f0a",
+          minHeight: "100vh",
+          boxShadow: "inset 0 0 80px rgba(0,0,0,0.6)",
+        }}
+        className="p-0 md:p-[24]"
+      >
         {/* Cork surface */}
-        <div style={{
-          backgroundImage: [
-            "repeating-linear-gradient(0deg,  transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px)",
-            "repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px)",
-            "radial-gradient(ellipse at 25% 35%, #c8956c 0%, #a0714a 45%, #b4825a 70%, #966941 100%)",
-          ].join(", "),
-          borderRadius: 4,
-          padding: "32px 28px 48px",
-          minHeight: "calc(100vh - 48px)",
-          position: "relative",
-          boxShadow: "inset 0 2px 8px rgba(0,0,0,0.3), inset 0 -2px 8px rgba(0,0,0,0.2)",
-        }}>
+        <div
+          style={{
+            backgroundImage: [
+              "repeating-linear-gradient(0deg,  transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px)",
+              "repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px)",
+              "radial-gradient(ellipse at 25% 35%, #c8956c 0%, #a0714a 45%, #b4825a 70%, #966941 100%)",
+            ].join(", "),
+            borderRadius: 4,
+            minHeight: "calc(100vh - 48px)",
+            position: "relative",
+            boxShadow: "inset 0 2px 8px rgba(0,0,0,0.3), inset 0 -2px 8px rgba(0,0,0,0.2)",
+          }}
+          className="p-0 md:pt-8 md:px-7 md:pb-12"
+        >
           {/* Grain */}
           <div aria-hidden style={{
             position: "absolute", inset: 0, borderRadius: 4,
