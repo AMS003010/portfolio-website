@@ -182,10 +182,13 @@ export default async function BlogPage({
               backgroundPosition: "0 32px",
             }}>
               {/* Red pin top */}
-              <div style={{
-                position: "absolute", top: -13, left: "50%",
-                transform: "translateX(-50%)", zIndex: 5,
-              }}>
+              <div
+                style={{
+                  position: "absolute", top: -13, left: "50%",
+                  transform: "translateX(-50%)", zIndex: 5,
+                }}
+                className="hidden md:block"
+              >
                 <div style={{
                   width: 16, height: 16, borderRadius: "50%",
                   background: "radial-gradient(circle at 40% 35%, #e74c3c, #c0392b)",
