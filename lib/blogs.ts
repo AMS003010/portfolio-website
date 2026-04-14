@@ -19,7 +19,6 @@ export interface Blog extends BlogMeta {
 const BLOGS_DIR = path.join(process.cwd(), "assets", "blogs");
 
 // Convert title to clean URL slug + short unique hash
-// Convert title to clean URL slug + short unique hash (using title + date)
 function slugify(title: string, date: string | null): string {
   const baseSlug = title
     .toLowerCase()
@@ -204,4 +203,56 @@ export function getBlogBySlug(slug: string): Blog | null {
     content,
     fileSlug: blogMeta.fileSlug,
   };
+}
+
+// ─────────────────────────────────────────────────────────────
+// NEW: RSS Support (added without changing any existing code)
+// ─────────────────────────────────────────────────────────────
+
+export interface BlogForRSS {
+  slug: string;
+  title: string;
+  date: string | null;           // original parsed date (e.g. "Jul 8, 2024")
+  pubDate: string;               // RFC 822 format required for RSS
+  description: string;           // short excerpt for <description>
+  coverImage: string | null;
+  author: string;
+}
+
+export function getAllBlogsForRSS(): BlogForRSS[] {
+  const blogs = getAllBlogs();   // reuse existing logic + sorting (newest first)
+
+  return blogs.map((blog) => {
+    const filePath = path.join(BLOGS_DIR, `${blog.fileSlug}.md`);
+    const raw = fs.readFileSync(filePath, "utf-8");
+    const { content } = parseMarkdown(raw);
+
+    // Create a short description (first ~180 characters after skipping images)
+    let description = content
+      .replace(/!\[.*?\]\(.*?\)/g, "")   // remove images
+      .replace(/\n+/g, " ")
+      .trim()
+      .slice(0, 180);
+
+    if (description.length === 180) description += "...";
+
+    // Convert date to RFC 822 for RSS (e.g. "Wed, 08 Jul 2024 00:00:00 GMT")
+    let pubDate = new Date().toUTCString(); // fallback
+    if (blog.date) {
+      const parsed = new Date(blog.date);
+      if (!isNaN(parsed.getTime())) {
+        pubDate = parsed.toUTCString();
+      }
+    }
+
+    return {
+      slug: blog.slug,
+      title: blog.title,
+      date: blog.date,
+      pubDate,
+      description,
+      coverImage: blog.coverImage,
+      author: "Abhijith M S",
+    };
+  });
 }
