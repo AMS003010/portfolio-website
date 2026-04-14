@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import Img1 from "@/assets/images/img1.jpg";
 import Img2 from "@/assets/images/img3.jpeg";
+import Img3 from "@/assets/images/dark-matter.jpg";
 
 // ── Fonts (add to your globals.css or layout.tsx) ──────────────────────────
 // @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Special+Elite&family=Kalam:wght@300;400;700&display=swap');
@@ -628,7 +629,7 @@ export default function Home() {
               <Tape variant="tr" />
               <NoteLabel>fun fact</NoteLabel>
               <NoteBody>
-                The network is{" "}
+                The cluster network is{" "}
                 <strong style={{ color: ink }}>NAT-ed</strong> from my actual home network — so
                 nothing inside the cluster can reach the home network.
               </NoteBody>
@@ -639,6 +640,38 @@ export default function Home() {
                 Why Pis over a mini PC? Fascinated by credit-sized SBCs — and ARM is increasingly first-class anyway 😅
               </NoteBody>
             </Note>
+
+            {/* 4 · Cosmic image polaroid */}
+            {
+              isNarrow ? (
+                <Polaroid
+                  src={Img3}
+                  alt="Dark matter is hidden code - unseen, yet structuring everything we observe"
+                  caption={
+                    <>
+                      &quot;Dark matter is hidden code - unseen, yet structuring everything we observe&quot;{" "}
+                      <Anchor href="https://in.pinterest.com/pin/65935582039284279/">[src]</Anchor>
+                    </>
+                  }
+                  rotate={-2}
+                  delay={230}
+                  wide
+                />
+              ) : (
+                <Polaroid
+                  src={Img3}
+                  alt="Dark matter is hidden code - unseen, yet structuring everything we observe"
+                  caption={
+                    <>
+                      &quot;Dark matter is hidden code - unseen, yet structuring everything we observe&quot;{" "}
+                      <Anchor href="https://in.pinterest.com/pin/65935582039284279/">[src]</Anchor>
+                    </>
+                  }
+                  rotate={-2}
+                  delay={230}
+                />
+              )
+            }
 
             {/* 9 · Expense Tracker */}
             {
